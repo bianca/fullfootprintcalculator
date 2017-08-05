@@ -1,0 +1,8 @@
+<div>
+	<div class="question">{{currentquestion.question}}</div>
+
+	<div class="answer" ng-repeat="answer in currentquestion.answers | limitTo:3" ng-click="next(answer)">
+	<img src="/images/placeholder.png" />
+	{{answer.answer}}
+	</div>
+</div>

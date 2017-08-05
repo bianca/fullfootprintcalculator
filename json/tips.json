@@ -1,0 +1,67 @@
+{
+	"tips" : {
+		"1"	: {
+			"tip" : "Switch to a renewable energy supplier for your home",
+			"category" : "home"
+			},
+		"2" : {
+			"tip" : "Consider energy conservation measures for your home, such as loft or wall insulation or double glazing",
+			"category" : "home"
+			},
+		"3"	: {
+			"tip" : "Switch to LED lights in your home",
+			"category" : "home"
+			},
+		"4" : {
+			"tip" : "Have a shower instead of a bath",
+			"category" : "home"
+			},
+		"5" : {
+			"tip" : "Try to find alternatives to driving where possible. Consider riding a bike or getting public transport",
+			"category" : "transportation"
+			},
+		"6" : {
+			"tip" : "Drive a low carbon vehicle",
+			"category" : "transportation"
+			},	
+		"7" : {
+			"tip" : "Adjust your driving style. You can reduce fuel consumption by not speeding and accelerating unnecessarily",
+			"category" : "transportation"
+			},
+		"8" : {	
+			"tip" : "If you need to fly, always fly economy and fly direct rather than stopping over",
+			"category" : "transportation"
+			},
+		"9" : {
+			"tip" : "Reduce your beef and dairy consumption",
+			"category" : "food"
+			}, 
+		"10" : {
+			"tip" : "Eat more locally produced food or consider growing your own",
+			"category" : "food"
+			},
+		"11" : {
+			"tip" : "Don't throw food away. Make sure you only buy and cook what is necessary.",
+			"category" : "food"
+			},
+		"12" : {
+			"tip" : "Reduce the number of goods you buy. Extraction of resources, manufacturing, transport and disposal of goods has a huge environmental impact",
+			"category" : "waste"
+			},
+		"13" : {
+			"tip" : "Reuse or recycle the products you already have, or buy second hand",
+			"category" : "waste"
+			}, 
+		"14" : {
+			"tip" : "Eliminate junk mail by unsubscribing from mailing lists",
+			"category" : "waste"
+			},
+		"15" : {
+			"tip" : "Bring your own bags and buy in bulk where possible to reduce packaging",
+			"category" : "waste"
+			},
+		"16" : {
+			"tip" : "Ask Full Footprint about further reductions"
+			}
+	}
+}

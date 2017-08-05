@@ -1,0 +1,136 @@
+/* Space out content a bit */
+body {
+  background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(images/splash.jpg);
+  background-size: cover, cover;
+
+}
+
+.logo {
+  background: url(/images/ffp.png);
+  width: 100%;
+  background-position: center, center;
+  height: 150px;
+  background-repeat: no-repeat;
+}
+
+.title, .subtitle {
+  width: 100%;
+  color: #fff;
+  text-align: center;
+}
+
+.title {
+  font-size: 90px;
+  font-family: 'BenchNine', sans-serif;  
+}
+
+.subtitle {
+  font-size: 26px;
+  font-family: 'PT Sans', sans-serif;
+}
+
+button {
+  background-color: rgba(0,0,0,0.8);
+  border: solid 1px #fff;
+  color: #fff;
+  font-size: 72px;
+  font-family: 'BenchNine', sans-serif;
+}
+
+div.splash_button {
+  margin-right: auto;
+  margin-left: auto;
+  width: initial;
+  text-align: center;
+}
+
+div.question {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 72px;
+  color: #fff;
+  text-align: center;
+  font-weight: lighter;
+}
+
+div.answer {
+  font-family: 'Lato', sans-serif;
+  font-size: 24px;
+  color: #fff;
+  width: 29%;
+  margin-left: 2%;
+  margin-right: 2%;
+  float: left;
+  clear: none;
+  text-align: center;
+}
+div.answer img {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+div.results {
+
+}
+
+div.results {
+    width: 300px;
+  height: 300px;
+  float: left;
+  clear: none;
+  background-repeat: no-repeat;
+}
+
+div.results_display {
+  width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+div.air {
+  background-image : url(/images/ffp.png);
+}
+div.land {
+  background-image : url(/images/ffp.png);
+}
+div.water {
+  background-image : url(/images/ffp.png);
+}
+
+#tips {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  font-size: 24px;
+}
+
+#tips ul li {
+  list-style: none;
+}
+
+.fade {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    opacity: 1;
+}
+.fade.ng-enter,
+.fade.ng-leave {
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.fade.ng-enter {
+    opacity: 0;
+}
+.fade.ng-enter-active {
+    opacity: 1;
+}
+.fade.ng-leave {
+    opacity: 1;
+}
+.fade.ng-leave-active {
+    opacity: 0;
+}

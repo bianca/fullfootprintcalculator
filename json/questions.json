@@ -1,0 +1,187 @@
+{
+	"questions" : {
+		"1" : {
+			"order": 1,
+			"question": "Tell us where you live",
+			"answers" : [
+				{
+					"answer" : "North America, Australia, Persian Gulf",
+					"land" : 619.72,
+					"air" : 1681.57,
+					"water" : 178776
+				},
+				{
+					"answer" : "Europe, Israel, Japan, South Korea",
+					"land" : 394.85,
+					"air" : 962.35,
+					"water" : 140784
+				},
+				{
+					"answer" : "Rest of the World",
+					"land" : 206.55,
+					"air" : 484.81,
+					"water" : 89496
+				}				
+			]
+		},
+		"2" : {
+			"order": 2,
+			"question": "I live in a",
+			"answers" : [
+				{
+					"answer" : "large house",
+					"land" : 1.25,
+					"air" : 1.25,
+					"water" : 1.25
+				},
+				{
+					"answer" : "medium house",
+					"land" : 1,
+					"air" : 1,
+					"water" : 1
+				},
+				{
+					"answer" : "small house",
+					"land" : 0.75,
+					"air" : 0.75,
+					"water" : 0.75
+				},
+				{
+					"answer" : "condo, flat, or apartment",
+					"land" : 0.5,
+					"air" : 0.5,
+					"water" : 0.5
+				},
+				{
+					"answer" : "zero emissions or net positive home",
+					"land" : 0,
+					"air" : 0,
+					"water" : 0
+				}				
+			]
+		},
+		"3" : {
+			"order": 3,
+			"question": "I share my home with",
+			"answers" : [
+				{
+					"answer" : "no one else",
+					"land" : 1,
+					"air" : 1,
+					"water" : 1
+				},
+				{
+					"answer" : "1 other person",
+					"land" : 0.5,
+					"air" : 0.5,
+					"water" : 0.5
+				},
+				{
+					"answer" : "2 other people",
+					"land" : 0.33,
+					"air" : 0.33,
+					"water" : 0.33
+				},
+				{
+					"answer" : "3 other people",
+					"land" : 0.25,
+					"air" : 0.25,
+					"water" : 0.25
+				},
+				{
+					"answer" : "4 other people",
+					"land" : 0.2,
+					"air" : 0.2,
+					"water" : 0.2
+				},
+				{
+					"answer" : "5 or more other people",
+					"land" : 0.15,
+					"air" : 0.15,
+					"water" : 0.15
+				}				
+			]
+		},
+		"4" : {
+			"order": 4,
+			"question": "While at home, usually I",
+			"answers" : [
+				{
+					"answer" : "Use the air conditioner, heater, lights, extra fridges, and other energy-consuming appliances heavily",
+					"land" : 1,
+					"air" : 1,
+					"water" : 1
+				},
+				{
+					"answer" : "Use energy-consuming appliances moderately, and/or purchase mainly energy-efficient options such as Energy Star and LED/CFL lights",
+					"land" : 0.8,
+					"air" : 0.8,
+					"water" : 0.8
+				},
+				{
+					"answer" : "Use appliances sparingly, turning lights them off before leaving the room, wearing clothing that is hot/cold instead of changing temperature settings",
+					"land" : 0.6,
+					"air" : 0.6,
+					"water" : 0.6
+				}				
+			]
+		},
+		"5" : {
+			"order": 5,
+			"question": "Most of my daily travel is by",
+			"answers" : [
+				{
+					"answer" : "car (heavy user)",
+					"land" : 2,
+					"air" : 2
+				},
+				{
+					"answer" : "car (average user)",
+					"land" : 1,
+					"air" : 1
+				},
+				{
+					"answer" : "car (light user)",
+					"land" : 0.65,
+					"air" : 0.65
+				},
+				{
+					"answer" : "motorbike",
+					"land" : 0.5,
+					"air" : 0.5
+				},
+				{
+					"answer" : "bus/train",
+					"land" : 0.2,
+					"air" : 0.2
+				},
+				{
+					"answer" : "walking/cycling",
+					"land" : 0,
+					"air" : 0
+				}				
+			]
+		},
+		"6" : {
+			"order": 6,
+			"question": "I usually go on holiday",
+			"answers" : [
+				{
+					"answer" : "a long flight away (to a faraway land)",
+					"land" : 26,
+					"air" : 26
+				},
+				{
+					"answer" : "a short flight away, or a long road trip (within my home country or to a nearby country)",
+					"land" : 8,
+					"air" : 8
+				},
+				{
+					"answer" : "close to home (short train or road trips, visiting people nearby, “staycation”)",
+					"land" : 1,
+					"air" : 1
+				}				
+			]
+		}
+	}
+}
