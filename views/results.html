@@ -1,14 +1,54 @@
+<div id="results_header">
+	You’re done! Here’s the diagnosis:
+</div>
 <div id="results_display">
-	<div class="results air" style="background-size: {{basesizes.air}}%">
+	<div class="results_ocontainer">
+		<div class="results_container">
+			<div class="results_vcontainer">
+				<div class="results air" style="line-height: {{relativeLine.air}}px; width: {{relativeTotal.air}}%; height: {{relativeTotal.air}}%; margin-left: -{{relativeOffset.air}}%">
+					<span class="results_text" style="margin-top: {{relativeOffset.air}}%"><br />
+						<span class="bubble_subtitles">you've created enough GHGs to fill</span> <br />
+							<span style="display:block">{{convertedValues.air}}</span> <br />
+						<span class="bubble_subtitles">hot air balloons</span>
+					</span>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="results land">
+	<div class="results_ocontainer">
+
+		<div class="results_container">
+			<div class="results_vcontainer">
+				<div class="results land" style="line-height: {{relativeLine.land}}px; width: {{relativeTotal.land}}%; height: {{relativeTotal.land}}%; margin-left: -{{relativeOffset.land}}%">
+					<span class="results_text" style="margin-top: {{relativeOffset.land}}%">
+						<span class="bubble_subtitles">you consume enough land to require</span> <br />
+							<span style="display:block">{{convertedValues.land}}</span> <br />
+						<span class="bubble_subtitles">planets per person</span>
+					</span>
+				</div>
+			</div>	
+		</div>
 	</div>
-	<div class="results water">
+	<div class="results_ocontainer">
+
+		<div class="results_container">
+			<div class="results_vcontainer">
+				<div class="results water" style="line-height: {{relativeLine.water}}px;width: {{relativeTotal.water}}%; height: {{relativeTotal.water}}%; margin-left: -{{relativeOffset.water}}%">
+					<span class="results_text" style="margin-top: {{relativeOffset.water}}%">
+						<span class="bubble_subtitles">you've used enough water to fill</span> <br />
+							<span style="display:block">{{convertedValues.water}}</span> <br /> 
+						<span class="bubble_subtitles">Olympic swimming pools</span>
+					</span>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
-
+<div id="tips_header">
+Things you could do to help:
+</div>
 <div id="tips">
 	<ul>
-	<li ng-repeat="tip in tips">{{tip.tip}}</li>
+	<li ng-repeat="tip in chosenTips">{{tip.tip}}</li>
 	</ul>
 </div>

@@ -44,15 +44,20 @@ div.splash_button {
   text-align: center;
 }
 
-div.question {
+div.question, div#results_header {
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 72px;
   color: #fff;
   text-align: center;
   font-weight: lighter;
+  text-shadow: 0 0 4px #000;
 }
 
-div.answer {
+div#results_header {
+  height: 200px;
+}
+
+div.answer, div#tips_header {
   font-family: 'Lato', sans-serif;
   font-size: 24px;
   color: #fff;
@@ -62,6 +67,13 @@ div.answer {
   float: left;
   clear: none;
   text-align: center;
+  text-shadow: 0 0 4px #000;
+
+}
+
+div#tips_header {
+  width: 100%;
+  margin-top: 100px;
 }
 div.answer img {
     margin-left: auto;
@@ -72,28 +84,78 @@ div.answer img {
 div.results {
 
 }
-
-div.results {
-    width: 300px;
-  height: 300px;
-  float: left;
+div.results_ocontainer {
+    width: 295px;
+  height: 295px;
+  display: block;
+  float: none;
   clear: none;
-  background-repeat: no-repeat;
+  display: inline-block;  
+}
+div.results_container {
+    width: 295px;
+  height: 295px;
+  display: table;
+    position: absolute;
 }
 
-div.results_display {
+div.results_vcontainer {
+
+    width: 295px;
+  height: 295px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+div.results {
+  margin: auto;
+  float: none;
+  clear: none;
+  background-repeat: no-repeat;
+  background-position: center center;
+    -moz-border-radius: 100px;
+    -webkit-border-radius: 100px;
+    border-radius: 100%;
+        border: solid 2px rgba(255,255,255,0.5);
+            font-size: 40px;
+    text-align: center;
+    color: #fff;
+    //padding-top: 140px;
+    //padding-top: 15%;
+    font-family: 'Open Sans Condensed', sans-serif;
+    line-height: 295px;
+}
+span.results_text {
+    vertical-align: middle;
+    //height: inherit;
+    //text-align: center;
+    //width: inherit;
+    //height: 100%;
+    //width: 100%;
+    //line-height: 90%;
+    display: inline-block;
+    line-height: normal;
+    text-shadow: 0 0 4px #000;
+    line-height: 22px;
+}
+
+div#results_display {
   width: 900px;
   margin-left: auto;
   margin-right: auto;
 }
+
+
+
 div.air {
-  background-image : url(/images/ffp.png);
+  background: url(/images/air.png), rgba(0, 102, 204,0.8);
+
 }
 div.land {
-  background-image : url(/images/ffp.png);
+  background: url(/images/land.png), rgba(102, 102, 51,0.8);
 }
 div.water {
-  background-image : url(/images/ffp.png);
+  background : url(/images/water.png), rgba(0, 153, 153,0.8);
 }
 
 #tips {
@@ -133,4 +195,9 @@ div.water {
 }
 .fade.ng-leave-active {
     opacity: 0;
+}
+.bubble_subtitles {
+  font-size: 16px;
+  line-height: 18px;
+  display: block;
 }
