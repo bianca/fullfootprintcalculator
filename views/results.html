@@ -50,5 +50,17 @@ Things you could do to help:
 <div id="tips">
 	<ul>
 	<li ng-repeat="tip in chosenTips">{{tip.tip}}</li>
+	<li>Offset your emissions by:
 	</ul>
+</div>
+<div class="offset">
+	<div class="button" ng-click="offset(1)">
+		1 day
+	</div>
+	<div class="button" ng-click="offset(29)">
+		1 month
+	</div>
+	<div class="button" ng-click="offset(365)">
+		1 year
+	</div>
 </div>

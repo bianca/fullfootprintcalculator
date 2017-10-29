@@ -8,7 +8,7 @@
  * Controller of the goodfellowsApp
  */
 angular.module('ffpApp')
-  .controller('ResultsCtrl', function ($scope, $http, $location, $rootScope) {
+  .controller('ResultsCtrl', function ($scope, $http, $location, $rootScope, $window) {
 
 	$http.get('/json/tips.json').success(function(response) {
         $scope.tips = response.tips;
@@ -272,6 +272,23 @@ angular.module('ffpApp')
       $rootScope.chooseTips();
     }
 
+    $scope.offsetEach = function (num, percentage) {
+          console.log(num)
+          console.log(Object.keys($scope.sum)[num])
+          console.log($scope.sum[ Object.keys($scope.sum)[num] ])
+          console.log($scope.sum[ Object.keys($scope.sum)[num] ]*percentage)
+          var data = {jsonrpc: "2.0", method: "Checkout::addItem", params: ["13", "1", Math.floor($scope.sum[ Object.keys($scope.sum)[num] ]*percentage), {}], id: 0}
+          $http.post('http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]', data).success(function(response) {
+            if ($scope.sum[ Object.keys($scope.sum)[num+1] ] in $scope.num) {
+              $scope.offsetEach(num+1)
+            } else {
+              $window.open('https://www-fullfootprint-org.checkout.weebly.com/#cart', '_blank');
+            }
+          });
+    }
 
+    $scope.offset = function (percentage) {
+      $scope.offsetEach(0, (percentage/365))
+    }
 
   });

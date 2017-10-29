@@ -2,6 +2,7 @@
 body {
   background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(/images/splash.jpg);
   background-size: cover, cover;
+  background-attachment: fixed;
 
 }
 
@@ -68,7 +69,19 @@ div.answer, div#tips_header {
   clear: none;
   text-align: center;
   text-shadow: 0 0 4px #000;
+  margin-bottom: 30px;
 
+}
+div.answer.a4_5, div.answer.a5_5 , div.answer.a1_4, div.answer.a3_4, , div.answer.a2_4, div.answer.a4_4 {
+    width: 30%;
+}
+div.answer.a4_5, div.answer.a1_4, div.answer.a3_4 {
+    margin-left: 15%;
+    margin-right: 5%;
+}
+div.answer.a5_5, div.answer.a2_4, div.answer.a4_4 {
+    margin-left: 5%;
+    margin-right: 15%;
 }
 
 div#tips_header {
@@ -200,4 +213,25 @@ div.water {
   font-size: 16px;
   line-height: 18px;
   display: block;
+}
+div.offset {
+  margin-bottom: 30px;
+}
+div.offset div {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 22%;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border: solid 3px rgba(255,255,255, 0.9);
+    background: rgba(255,255,255, 0.4);
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    float: left;
+    clear: none;
+    margin-bottom: 30px;
 }

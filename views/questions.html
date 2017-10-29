@@ -1,7 +1,7 @@
 <div>
 	<div class="question">{{currentquestion.question}}</div>
 
-	<div class="answer" ng-repeat="answer in currentquestion.answers | limitTo:3" ng-click="next(answer)">
+	<div ng-repeat="(key,answer) in currentquestion.answers" class="answer a{{(key+1)}}_{{currentquestion.answers.length}}" ng-click="next(answer)">
 	<img src="/images/placeholder.png" />
 	{{answer.answer}}
 	</div>
