@@ -7,12 +7,14 @@
 				{
 					"answer" : "North America, Australia, Persian Gulf",
 					"shortanswer": "na",
+					"image" : "na",
 					"land" : 619.72,
 					"air" : 1681.57,
 					"water" : 178776
 				},
 				{
 					"answer" : "Europe, Israel, Japan, South Korea",
+					"image" : "eu",
 					"shortanswer": "eu",
 					"land" : 394.85,
 					"air" : 962.35,
@@ -20,6 +22,7 @@
 				},
 				{
 					"answer" : "Rest of the World",
+					"image" : "rotw",
 					"shortanswer": "rotw",
 					"land" : 206.55,
 					"air" : 484.81,
@@ -33,30 +36,36 @@
 			"answers" : [
 				{
 					"answer" : "large house",
+					"image" : "bighouse",
 					"land" : 1.25,
 					"air" : 1.25,
 					"water" : 1.25
 				},
 				{
 					"answer" : "medium house",
+					"image" : "house",
 					"land" : 1,
 					"air" : 1,
 					"water" : 1
 				},
 				{
 					"answer" : "small house",
+					"image" : "smallhouse",
 					"land" : 0.75,
 					"air" : 0.75,
 					"water" : 0.75
 				},
 				{
 					"answer" : "condo, flat, or apartment",
+					"image" : "apartments",
 					"land" : 0.5,
 					"air" : 0.5,
 					"water" : 0.5
 				},
 				{
 					"answer" : "zero emissions or net positive home",
+					"image" : "netzerohouse",
+					"blacklist" : [1],
 					"land" : 0,
 					"air" : 0,
 					"water" : 0
@@ -69,40 +78,39 @@
 			"answers" : [
 				{
 					"answer" : "no one else",
+					"image" : "noone",
 					"land" : 1,
 					"air" : 1,
 					"water" : 1
 				},
 				{
 					"answer" : "1 other person",
+					"image" : "oneperson",
 					"land" : 0.5,
 					"air" : 0.5,
 					"water" : 0.5
 				},
 				{
 					"answer" : "2 other people",
+					"image" : "twopeople",
 					"land" : 0.33,
 					"air" : 0.33,
 					"water" : 0.33
 				},
 				{
 					"answer" : "3 other people",
+					"image" : "threepeople",
 					"land" : 0.25,
 					"air" : 0.25,
 					"water" : 0.25
 				},
 				{
-					"answer" : "4 other people",
+					"answer" : "4 or more other people",
+					"image" : "morethanthreepeople",
 					"land" : 0.2,
 					"air" : 0.2,
 					"water" : 0.2
-				},
-				{
-					"answer" : "5 or more other people",
-					"land" : 0.15,
-					"air" : 0.15,
-					"water" : 0.15
-				}				
+				}			
 			]
 		},
 		"4" : {
@@ -111,18 +119,22 @@
 			"answers" : [
 				{
 					"answer" : "Use the air conditioner, heater, lights, extra fridges, and other energy-consuming appliances heavily",
+					"image" : "energyheavy",
 					"land" : 1,
 					"air" : 1,
 					"water" : 1
 				},
 				{
 					"answer" : "Use energy-consuming appliances moderately, and/or purchase mainly energy-efficient options such as Energy Star and LED/CFL lights",
+					"image" : "moderateenergy",
+					"blacklist" : [3],
 					"land" : 0.8,
 					"air" : 0.8,
 					"water" : 0.8
 				},
 				{
 					"answer" : "Use appliances sparingly, turning lights them off before leaving the room, wearing clothing that is hot/cold instead of changing temperature settings",
+					"image" : "energyefficient",
 					"land" : 0.6,
 					"air" : 0.6,
 					"water" : 0.6
@@ -135,31 +147,35 @@
 			"answers" : [
 				{
 					"answer" : "car (heavy user)",
+					"image" : "heavycar",
+					"whitelist" : [6],
 					"land" : 2,
 					"air" : 2
 				},
 				{
 					"answer" : "car (average user)",
+					"image" : "car",
+					"whitelist" : [6],
 					"land" : 1,
 					"air" : 1
 				},
 				{
 					"answer" : "car (light user)",
+					"image" : "lightcar",
+					"whitelist" : [6],	
 					"land" : 0.65,
 					"air" : 0.65
 				},
 				{
 					"answer" : "motorbike",
+					"image" : "scooter",
 					"land" : 0.5,
 					"air" : 0.5
 				},
 				{
-					"answer" : "bus/train",
-					"land" : 0.2,
-					"air" : 0.2
-				},
-				{
 					"answer" : "walking/cycling",
+					"image" : "bicycle",
+					"blacklist" : [5],
 					"land" : 0,
 					"air" : 0
 				}				
@@ -171,16 +187,21 @@
 			"answers" : [
 				{
 					"answer" : "a long flight away (to a faraway land)",
+					"image" : "longflight",
+					"whitelist" : [7],
 					"land" : 26,
 					"air" : 26
 				},
 				{
 					"answer" : "a short flight away, or a long road trip (within my home country or to a nearby country)",
+					"image" : "shortflight",
+					"whitelist" : [8],
 					"land" : 8,
 					"air" : 8
 				},
 				{
 					"answer" : "close to home (short train or road trips, visiting people nearby, “staycation”)",
+					"image" : "close",
 					"land" : 1,
 					"air" : 1
 				}				
@@ -192,6 +213,8 @@
 			"answers" : [
 				{
 					"answer" : "several servings of meat daily",
+					"image" : "meat",
+					"whitelist" : [10],
 					"land" : 1.35,
 					"air" : 1.15,
 					"water" : {
@@ -202,18 +225,23 @@
 				},
 				{
 					"answer" : "one or two servings of meat daily",
+					"image" : "bitomeat",
+					"whitelist" : [10],
 					"land" : 1,
 					"air" : 1,
 					"water" : 1
 				},
 				{
 					"answer" : "meat a few times a week, often only chicken or fish",
+					"image" : "bitomeat",
+					"whitelist" : [10],
 					"land" : 0.7,
 					"air" : 0.85,
 					"water" : 0.9
 				},
 				{
 					"answer" : "mainly vegetarian",
+					"image" : "vegetarian",
 					"land" : 0.55,
 					"air" : 0.8,
 					"water" : {
@@ -224,6 +252,7 @@
 				},
 				{
 					"answer" : "mainly vegan",
+					"image" : "vegan",
 					"land" : 0.35,
 					"air" : 0.7,
 					"water" : 0.6
@@ -236,18 +265,23 @@
 			"answers" : [
 				{
 					"answer" : "often buy new clothes, toys, appliances, electronics, and disposable items such as plastic plates and cups",
+					"image" : "new",
+					"whitelist" : [13],
 					"land" : 1.25,
 					"air" : 1.25,
 					"water" : 1.25
 				},
 				{
 					"answer" : "sometimes buy new clothes, toys, electronics, appliances, and disposable items such as plastic plates and cups",
+					"image" : "somenew",
+					"whitelist" : [13],
 					"land" : 1,
 					"air" : 1,
 					"water" : 1
 				},
 				{
 					"answer" : "rarely buy new clothes, toys, electronics, appliances, and disposable items such as plastic plates and cups",
+					"image" : "fix",
 					"land" : 0.5,
 					"air" : 0.5,
 					"water" : 0.5
@@ -260,24 +294,30 @@
 			"answers" : [
 				{
 					"answer" : "rarely re-use, recycle, or compost",
+					"image" : "garbage",
+					"whitelist" : [15],
 					"land" : 1,
 					"air" : 1,
 					"water" : 1
 				},
 				{
 					"answer" : "sometimes re-use, recycle, and compost",
+					"image" : "sometimes",
+					"whitelist" : [15],
 					"land" : 0.8,
 					"air" : 0.8,
 					"water" : 0.8
 				},
 				{
 					"answer" : "usually re-use, recycle, and compost",
+					"image" : "often",
 					"land" : 0.6,
 					"air" : 0.6,
 					"water" : 0.6
 				},
 				{
 					"answer" : "almost always re-use, recycle, and compost",
+					"image" : "always",
 					"land" : 0.4,
 					"air" : 0.4,
 					"water" : 0.4

@@ -183,13 +183,41 @@ angular.module('ffpApp')
           }
         }
       }
-       */     
-      for (var i=0; i<3; i++) {
-        var r = (Math.floor((Math.random())*100)%15)
+       */  
+       var whitelist = []
+       var blacklist = []
+       var q = $rootScope.questions
+       for (var qs in q) {
+        if ("blacklist" in q[qs].answer) {
+          blacklist = blacklist.concat(q[qs].answer.blacklist)
+        }
+        if ("whitelist" in q[qs].answer) {
+          whitelist = whitelist.concat(q[qs].answer.whitelist)
+        }
+       }
+       console.log($scope.tips)
+       for (var i in whitelist) {
+        if ($rootScope.chosenTips.length < 3) {
+          $rootScope.chosenTips.push($scope.tips[whitelist[i]])
+          delete $scope.tips[i]
+        }
+       }
+       console.log($scope.tips)
+       console.log(whitelist, $rootScope.chosenTips)
+       if ($rootScope.chosenTips.length < 3) {
 
-        $rootScope.chosenTips[i] = $scope.tips[r]
-        console.log(r, $scope.tips[r])
-      }
+          for (var i in blacklist) {
+            delete $scope.tips[blacklist[i]]
+          }
+          while ($rootScope.chosenTips.length < 3) {
+            var r = (Math.floor((Math.random())*100)%15)
+            console.log(r, $rootScope.chosenTips)
+            if (r in $scope.tips) {
+              $rootScope.chosenTips.push($scope.tips[r])
+            }
+          }
+       }
+       console.log($rootScope.chosenTips)
 
     }
     
@@ -273,10 +301,6 @@ angular.module('ffpApp')
     }
 
     $scope.offsetEach = function (num, percentage) {
-          console.log(num)
-          console.log(Object.keys($scope.sum)[num])
-          console.log($scope.sum[ Object.keys($scope.sum)[num] ])
-          console.log($scope.sum[ Object.keys($scope.sum)[num] ]*percentage)
           var data = {jsonrpc: "2.0", method: "Checkout::addItem", params: ["13", "1", Math.floor($scope.sum[ Object.keys($scope.sum)[num] ]*percentage), {}], id: 0}
           $http.post('http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]', data).success(function(response) {
             if ($scope.sum[ Object.keys($scope.sum)[num+1] ] in $scope.num) {

@@ -2,7 +2,7 @@
 	<div class="question">{{currentquestion.question}}</div>
 
 	<div ng-repeat="(key,answer) in currentquestion.answers" class="answer a{{(key+1)}}_{{currentquestion.answers.length}}" ng-click="next(answer)">
-	<img src="/images/placeholder.png" />
+	<img ng-src="/images/q{{currentquestion.order}}-{{answer.image}}.png" />
 	{{answer.answer}}
 	</div>
 </div>
