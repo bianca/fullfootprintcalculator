@@ -28,8 +28,7 @@ angular.module('ffpApp')
 	    	$scope.currentquestion = $rootScope.questions[$scope.pointer]
         $scope.fl = !$scope.fl
 	    } else {
-        console.log($rootScope.localhref+"/"+"results")
-	    	$location.url($rootScope.localhref+"results");
+	    	$window.location.url = $rootScope.localhref+"results"
 	    }
     }
 
