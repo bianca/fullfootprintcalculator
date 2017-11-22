@@ -12,7 +12,9 @@ angular.module('ffpApp')
 
  	$rootScope.localhref = window.location.href
  	var check = window.location.hostname
+ 	console.log(check)
  	if (check != "www.fullfootprint.org") {
 	  $rootScope.localhref = ""
 	} 
+	console.log($rootScope.localhref)
   });
