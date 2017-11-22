@@ -256,7 +256,7 @@
   text-shadow: 0 0 8px rgba(1,68,33, 1);
 }
 
-#calculator.fade {
+#calculator .fade {
     position: absolute;
     top: 0;
     left: 0;
@@ -268,21 +268,21 @@
     background-attachment: fixed;
     z-index: 3000;
 }
-#calculator.fade.ng-enter,
-#calculator.fade.ng-leave {
+#calculator .fade.ng-enter,
+#calculator .fade.ng-leave {
     -webkit-transition: all 1s ease;
     transition: all 1s ease;
 }
-#calculator.fade.ng-enter {
+#calculator .fade.ng-enter {
     opacity: 0;
 }
-#calculator.fade.ng-enter-active {
+#calculator .fade.ng-enter-active {
     opacity: 1;
 }
-#calculator.fade.ng-leave {
+#calculator .fade.ng-leave {
     opacity: 1;
 }
-#calculator.fade.ng-leave-active {
+#calculator .fade.ng-leave-active {
     opacity: 0;
 }
 #calculator .bubble_subtitles {
