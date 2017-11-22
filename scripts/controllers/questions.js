@@ -29,6 +29,7 @@ angular.module('ffpApp')
         $scope.fl = !$scope.fl
 	    } else {
 	    	$location.url = "http://www.fullfootprint.org/measure1.html#/results"
+        $scope.$apply()
 	    }
     }
 
