@@ -29,7 +29,7 @@ angular.module('ffpApp')
         $scope.fl = !$scope.fl
 	    } else {
         console.log($rootScope.localhref+"/"+"results")
-	    	$location.path($rootScope.localhref+"/"+"results");
+	    	$location.path($rootScope.localhref+"results");
 	    }
     }
 
