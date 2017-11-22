@@ -1,15 +1,15 @@
 <div id="results_header">
-	You’re done! Here’s the diagnosis:
+	You’re done! Here's what your lifetime footprint looks like:
 </div>
 <div id="results_display">
 	<div class="results_ocontainer">
 		<div class="results_container">
 			<div class="results_vcontainer">
-				<div class="results air" style="line-height: {{relativeLine.air}}px; width: {{relativeTotal.air}}%; height: {{relativeTotal.air}}%; margin-left: -{{relativeOffset.air}}%">
-					<span class="results_text" style="margin-top: {{relativeOffset.air}}%"><br />
-						<span class="bubble_subtitles">you've created enough GHGs to fill</span> <br />
-							<span style="display:block">{{convertedValues.air}}</span> <br />
-						<span class="bubble_subtitles">hot air balloons</span>
+				<div ng-init="grow=true" ng-class="{grow: grow}" class="results air" style="line-height: {{relativeLine.air-tipvalues}}px; width: {{relativeTotal.air-tipvalues}}%; height: {{relativeTotal.air-tipvalues}}%; margin-left: -{{relativeOffset.air-(tipvalues/2)}}%">
+					<span class="results_text" style="margin-top: {{relativeOffset.air-(tipvalues/2)}}%"><br />
+						<!--span class="bubble_subtitles">you've created enough GHGs to fill</span> <br /-->
+							<span style="display:block">{{sum.air}}</span> <br />
+						<span class="bubble_subtitles">kg GHGs</span>
 					</span>
 				</div>
 			</div>
@@ -19,11 +19,11 @@
 
 		<div class="results_container">
 			<div class="results_vcontainer">
-				<div class="results land" style="line-height: {{relativeLine.land}}px; width: {{relativeTotal.land}}%; height: {{relativeTotal.land}}%; margin-left: -{{relativeOffset.land}}%">
-					<span class="results_text" style="margin-top: {{relativeOffset.land}}%">
-						<span class="bubble_subtitles">you consume enough land to require</span> <br />
-							<span style="display:block">{{convertedValues.land}}</span> <br />
-						<span class="bubble_subtitles">planets per person</span>
+				<div ng-class="{grow: grow}" class="results land" style="line-height: {{relativeLine.land-tipvalues}}px; width: {{relativeTotal.land-tipvalues}}%; height: {{relativeTotal.land-tipvalues}}%; margin-left: -{{relativeOffset.land-(tipvalues/2)}}%">
+					<span class="results_text" style="margin-top: {{relativeOffset.land-(tipvalues/2)}}%">
+						<!--span class="bubble_subtitles">you consume enough land to require</span> <br /-->
+							<span style="display:block">{{sum.land}}</span> <br />
+						<span class="bubble_subtitles">Hectares land</span>
 					</span>
 				</div>
 			</div>	
@@ -33,11 +33,11 @@
 
 		<div class="results_container">
 			<div class="results_vcontainer">
-				<div class="results water" style="line-height: {{relativeLine.water}}px;width: {{relativeTotal.water}}%; height: {{relativeTotal.water}}%; margin-left: -{{relativeOffset.water}}%">
-					<span class="results_text" style="margin-top: {{relativeOffset.water}}%">
-						<span class="bubble_subtitles">you've used enough water to fill</span> <br />
-							<span style="display:block">{{convertedValues.water}}</span> <br /> 
-						<span class="bubble_subtitles">Olympic swimming pools</span>
+				<div ng-class="{grow: grow}" class="results water" style="line-height: {{relativeLine.water-tipvalues}}px;width: {{relativeTotal.water-tipvalues}}%; height: {{relativeTotal.water-tipvalues}}%; margin-left: -{{relativeOffset.water-(tipvalues/2)}}%">
+					<span class="results_text" style="margin-top: {{relativeOffset.water-(tipvalues/2)}}%">
+						<!--span class="bubble_subtitles">you've used enough water to fill</span> <br /-->
+							<span style="display:block">{{sum.water}}</span> <br /> 
+						<span class="bubble_subtitles">m<sup>3</sup> water</span>
 					</span>
 				</div>
 			</div>
@@ -49,7 +49,7 @@ Things you could do to help:
 </div>
 <div id="tips">
 	<ul>
-	<li ng-repeat="tip in chosenTips"><div class="checkbox"></div> {{tip.tip}}</li>
+	<li ng-repeat="tip in chosenTips"><div ng-class="{checked: tip.checked}" class="checkbox" ng-click="checktoggle(tip)"></div> {{tip.tip}}</li>
 	<li class="offset"><div class="checkbox"></div>Offset your emissions by:
 	</ul>
 </div>

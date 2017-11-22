@@ -10,13 +10,14 @@
 angular.module('ffpApp')
   .controller('ResultsCtrl', function ($scope, $http, $location, $rootScope, $window) {
 
-	$http.get('/json/tips.json').success(function(response) {
+	$http.get(host+'/json/tips.json').success(function(response) {
         $scope.tips = response.tips;
         $scope.calculate()
     });
 
     $rootScope.chosenTips = []
 
+    $scope.grow = false
     $scope.tabulate = {
       land: {
         housing : 0,
@@ -171,6 +172,7 @@ angular.module('ffpApp')
         "land": 0,
         "water": 0
       }
+      $scope.tipvalues = 0
 
     $rootScope.chooseTips = function () {
       /*
@@ -216,6 +218,10 @@ angular.module('ffpApp')
               $rootScope.chosenTips.push($scope.tips[r])
             }
           }
+       }
+
+       for (var i in $rootScope.chosenTips) {
+          $rootScope.chosenTips[i].checked = false
        }
        console.log($rootScope.chosenTips)
 
@@ -300,16 +306,46 @@ angular.module('ffpApp')
       $rootScope.chooseTips();
     }
 
-    $scope.offsetEach = function (num, percentage) {
-          var data = {jsonrpc: "2.0", method: "Checkout::addItem", params: ["13", "1", Math.floor($scope.sum[ Object.keys($scope.sum)[num] ]*percentage), {}], id: 0}
-          $http.post('http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]', data).success(function(response) {
-            if ($scope.sum[ Object.keys($scope.sum)[num+1] ] in $scope.num) {
-              $scope.offsetEach(num+1)
-            } else {
-              $window.open('https://www-fullfootprint-org.checkout.weebly.com/#cart', '_blank');
-            }
-          });
+    $scope.checktoggle = function (tip) {
+        tip.checked=!tip.checked
+        if (!tip.checked) {
+          $scope.tipvalues = $scope.tipvalues - 20
+        } else {
+          $scope.tipvalues = $scope.tipvalues + 20
+        }
     }
+
+    $scope.offsetEach = function (num, percentage) {
+          var data = {jsonrpc: "2.0", method: "Checkout::addItem", params: ["18", "1", Math.floor($scope.sum[ Object.keys($scope.sum)[num] ]*percentage), {}], id: 0}
+          
+
+          // http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]&jsonrpc=2.0&method=Checkout::addItem&params:[18,1,100,{}]&id=0
+        $http({
+          url: 'http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]',
+          method: "POST",
+          data: data,
+        }, {
+          headers: {
+            "Accept" : "application/json, text/javascript, */*; q=0.01",
+            "Accept-Encoding" : "gzip, deflate",
+            "Accept-Language" : "en-US,en;q=0.8",
+            "Connection" : "keep-alive",
+            "Content-Type" : "application/json; charset=UTF-8",
+           "X-Requested-With" : "XMLHttpRequest"
+          },
+          dataType: "json"
+          //headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).success(function(response) {
+              console.log("successful")
+              if ($scope.sum[ Object.keys($scope.sum)[num+1] ] in $scope.num) {
+                $scope.offsetEach(num+1)
+              } else {
+                $window.open('https://www-fullfootprint-org.checkout.weebly.com/#cart', '_blank');
+              }
+            });
+
+          //$http.post('http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]', data)
+        }
 
     $scope.offset = function (percentage) {
       $scope.offsetEach(0, (percentage/365))

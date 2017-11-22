@@ -1,12 +1,12 @@
 /* Space out content a bit */
-body {
-  background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(/images/splash.jpg);
-  background-size: cover, cover;
-  background-attachment: fixed;
+//body {
+//  background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(/images/splash.jpg);
+//  background-size: cover, cover;
+//  background-attachment: fixed;
+//
+//}
 
-}
-
-.logo {
+#calculator .logo {
   background: url(/images/ffp.png);
   width: 100%;
   background-position: center, center;
@@ -14,29 +14,27 @@ body {
   background-repeat: no-repeat;
 }
 
-.title, .subtitle {
+#calculator .title, .subtitle {
   width: 100%;
   color: #fff;
   text-align: center;
 
 }
 
-
-
-.title {
+#calculator .title {
   font-size: 90px;
   font-family: 'BenchNine', sans-serif;  
   text-shadow: 0px 0px 8px #000;
 }
 
-.subtitle {
+#calculator .subtitle {
   font-size: 26px;
   font-family: 'PT Sans', sans-serif;
   padding-top: 30px;
     text-shadow: 2px 2px 8px #000;
 }
 
-button {
+#calculator button {
   background-color: rgba(0,0,0,0.8);
   border: solid 1px #fff;
   color: #fff;
@@ -58,14 +56,14 @@ button {
     box-shadow: 2px 2px 8px #000;
 }
 
-div.splash_button {
+#calculator div.splash_button {
   margin-right: auto;
   margin-left: auto;
   width: initial;
   text-align: center;
 }
 
-div.question, div#results_header {
+#calculator div.question, div#results_header {
   font-family: 'Open Sans Condensed', sans-serif;
   font-size: 72px;
   color: #fff;
@@ -75,7 +73,7 @@ div.question, div#results_header {
 }
 
 
-div#results_header {
+#calculator div#results_header {
   height: 200px;
   font-family: Lato;
   font-size: 60px;
@@ -83,10 +81,9 @@ div#results_header {
   font-weight: 200;
   text-shadow: 0 0 8px #000;
   letter-spacing: -4px;
-
 }
 
-div.answer, div#tips_header {
+#calculator div.answer, div#tips_header {
   font-family: 'Lato', sans-serif;
   font-size: 24px;
   color: #fff;
@@ -100,25 +97,25 @@ div.answer, div#tips_header {
   margin-bottom: 30px;
 }
 
-div.answer img {
+#calculator div.answer img {
   box-shadow: 0 0 0px rgba(0,0,0,0);
   transition: 2s;
   background-color: rgba(255,255,255,0);
 }
 
-div.answer img:hover {
+#calculator div.answer img:hover {
   box-shadow: 0 0 50px #fff;
   background-color: rgba(255,255,255,0.4);
   transition: 2s;
 }
 
-div#tips_header {
+#calculator div#tips_header {
     font-size: 40px;
     text-shadow: 0 0 8px rgba(1,68,33, 0.7);
     font-weight: 300;
 }
 
-div.checkbox {
+#calculator div.checkbox {
   width: 20px;
   height: 20px;
   border: solid 3px #fff;
@@ -128,34 +125,42 @@ div.checkbox {
   float: left;
   margin-top: 2px;
   margin-right: 20px;
+  transition: 1s;
+    background-position: center center;
+  background-size: 100%;
 }
 
-div.answer.a4_5, div.answer.a5_5 , div.answer.a1_4, div.answer.a3_4, , div.answer.a2_4, div.answer.a4_4 {
+#calculator div.checkbox.checked {
+  background-image: url(http://calculator.fullfootprint.org/images/ic_done_white_24dp.png);
+  background-position: center center;
+  background-size: 100%;
+  transition: 1s;
+}
+
+#calculator div.answer.a4_5, div.answer.a5_5 , div.answer.a1_4, div.answer.a3_4, , div.answer.a2_4, div.answer.a4_4 {
     width: 30%;
 }
-div.answer.a4_5, div.answer.a1_4, div.answer.a3_4 {
+#calculator div.answer.a4_5, div.answer.a1_4, div.answer.a3_4 {
     margin-left: 15%;
     margin-right: 5%;
 }
-div.answer.a5_5, div.answer.a2_4, div.answer.a4_4 {
+#calculator div.answer.a5_5, div.answer.a2_4, div.answer.a4_4 {
     margin-left: 5%;
     margin-right: 15%;
 }
 
-div#tips_header {
+#calculator div#tips_header {
   width: 100%;
   margin-top: 100px;
 }
-div.answer img {
+
+#calculator div.answer img {
     margin-left: auto;
     margin-right: auto;
     display: block;
 }
 
-div.results {
-
-}
-div.results_ocontainer {
+#calculator div.results_ocontainer {
     width: 295px;
   height: 295px;
   display: block;
@@ -163,22 +168,22 @@ div.results_ocontainer {
   clear: none;
   display: inline-block;  
 }
-div.results_container {
+
+#calculator div.results_container {
     width: 295px;
   height: 295px;
   display: table;
     position: absolute;
 }
 
-div.results_vcontainer {
-
+#calculator div.results_vcontainer {
     width: 295px;
   height: 295px;
     display: table-cell;
     vertical-align: middle;
 }
 
-div.results {
+#calculator div.results {
   margin: auto;
   float: none;
   clear: none;
@@ -196,7 +201,7 @@ div.results {
     font-family: 'Open Sans Condensed', sans-serif;
     line-height: 295px;
 }
-span.results_text {
+#calculator span.results_text {
     vertical-align: middle;
     //height: inherit;
     //text-align: center;
@@ -210,26 +215,27 @@ span.results_text {
     line-height: 22px;
 }
 
-div#results_display {
+#calculator div#results_display {
   width: 900px;
   margin-left: auto;
   margin-right: auto;
 }
 
-
-
-div.air {
-  background: url(/images/air.png), rgba(0, 102, 204,0.8);
-
-}
-div.land {
-  background: url(/images/land.png), rgba(102, 102, 51,0.8);
-}
-div.water {
-  background : url(/images/water.png), rgba(0, 153, 153,0.8);
+#calculator div.grow {
+  transition: 2s;
 }
 
-#tips {
+#calculator div.air {
+  background: url(http://calculator.fullfootprint.org/images/air.png), rgba(0, 102, 204,0.8);
+}
+#calculator div.land {
+  background: url(http://calculator.fullfootprint.org/images/land.png), rgba(102, 102, 51,0.8);
+}
+#calculator div.water {
+  background : url(http://calculator.fullfootprint.org/images/water.png), rgba(0, 153, 153,0.8);
+}
+
+#calculator #tips {
   width: 50%;
   margin-left: auto;
   margin-right: auto;
@@ -238,52 +244,56 @@ div.water {
   font-size: 24px;
 }
 
-#tips ul li {
+#calculator #tips ul li {
   list-style: none;
   font-weight: 300;
   margin-bottom: 20px;
   text-shadow: 0 0 8px rgba(1,68,33, 0.7);
 }
 
-#tips ul li.offset {
+#calculator #tips ul li.offset {
   font-weight: 700;
   text-shadow: 0 0 8px rgba(1,68,33, 1);
 }
 
-.fade {
+#calculator .fade {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 100%;
     opacity: 1;
+    background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(/images/splash.jpg);
+    background-size: cover, cover;
+    background-attachment: fixed;
+    z-index: 3000;
 }
-.fade.ng-enter,
-.fade.ng-leave {
+#calculator .fade.ng-enter,
+#calculator .fade.ng-leave {
     -webkit-transition: all 1s ease;
     transition: all 1s ease;
 }
-.fade.ng-enter {
+#calculator .fade.ng-enter {
     opacity: 0;
 }
-.fade.ng-enter-active {
+#calculator .fade.ng-enter-active {
     opacity: 1;
 }
-.fade.ng-leave {
+#calculator .fade.ng-leave {
     opacity: 1;
 }
-.fade.ng-leave-active {
+#calculator .fade.ng-leave-active {
     opacity: 0;
 }
-.bubble_subtitles {
+#calculator .bubble_subtitles {
   font-size: 16px;
   line-height: 18px;
   display: block;
 }
-div.offset {
+#calculator div.offset {
   margin-bottom: 30px;
 }
-div.offset div {
+#calculator div.offset div {
     margin-left: 5%;
     margin-right: 5%;
     width: 22%;
@@ -304,20 +314,82 @@ div.offset div {
     transition: 2s;
 }
 
-div.offset div:hover {
+#calculator div.offset div:hover {
   transition: 2s;
   text-shadow: 0 0 20px rgba(1,68,33, 1);
   background: rgba(250,250,250, 0.7);
 }
 
-div#tips_header {
+#calculator div#tips_header {
   margin-left: 0px;
   margin-right: 0px;
 }
 
+#calculator div.imgbg {
+  background-image: url(http://calculator.fullfootprint.org/images/whitebg.png);
+  width: 253px;
+  height: 176px;
+  margin: auto;
+}
+
+#calculator div.imgbg img{
+  opacity: 1;
+}
+
+#calculator div.imgbg img:hover{
+  opacity: 0.7;
+}
+
+
+#calculator .fade-in-and-out {
+  -webkit-animation: fade-in-and-out 4s 1;
+  animation: fade-in-and-out 4s 1;
+  opacity: 1;
+}
+
+@-webkit-keyframes fade-in-and-out {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+#calculator .flash_this {
+  opacity: 1;
+  -webkit-animation: fade-in-and-out 1s 1;
+  animation: fade-in-and-out 1s 1;
+}
+
+#calculator .fade-element-in {
+  position: absolute;
+  width: 100%;
+}
+
+#calculator .fade-element-in.ng-enter {
+  transition: 1s linear all;
+  opacity: 0;
+}
+
+#calculator .fade-element-in-init .fade-element-in.ng-enter {
+  opacity: 1;
+}
+
+#calculator .fade-element-in.ng-enter.ng-enter-active {
+  opacity: 1;
+}
+
+#calculator .fade-element-in.ng-leave {
+  transition: 1s linear all;
+  opacity: 1;
+}
+
+#calculator .fade-element-in.ng-leave.ng-leave-active {
+  opacity: 0;
+}
+
+
 
 @media (max-width: 450px) { 
-    div.answer {
+    #calculator div.answer {
       width: 100%;
       float: left;
       clear: both;

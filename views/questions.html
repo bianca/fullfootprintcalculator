@@ -1,8 +1,10 @@
-<div>
+<div ng-repeat="(qkey,question) in questions" ng-if="qkey==pointer" class="fade-element-in">
 	<div class="question">{{currentquestion.question}}</div>
 
 	<div ng-repeat="(key,answer) in currentquestion.answers" class="answer a{{(key+1)}}_{{currentquestion.answers.length}}" ng-click="next(answer)">
-	<img ng-src="/images/q{{currentquestion.order}}-{{answer.image}}.png" />
-	{{answer.answer}}
+	<div class="imgbg">
+		<img ng-src="{{live}}/images/q{{currentquestion.order}}-{{answer.image}}.png" />
+		{{answer.answer}}
+		</div>
 	</div>
 </div>

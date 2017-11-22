@@ -8,6 +8,12 @@
  *
  * Main module of the application.
  */
+var host = window.location.hostname;
+if (host == "localhost") {
+  host = ""
+} else if (host == "www.fullfootprint.org") {
+  host = "http://calculator.fullfootprint.org"
+}
 var App = angular
   .module('ffpApp', [
     'ngAnimate',
@@ -17,25 +23,28 @@ var App = angular
     'ngSanitize',
     'ngTouch'
   ])
-  .config(function ($routeProvider, $httpProvider) {
-    $httpProvider.defaults.useXDomain = true;
-    delete $httpProvider.defaults.headers.common["X-Requested-With"]; 
+  .config(function ($routeProvider, $httpProvider, $sceDelegateProvider) {
+    //$httpProvider.defaults.useXDomain = true;
+    //$sceDelegateProvider.resourceUrlWhitelist(['http://calculator.fullfootprint.org/*']);
+    console.log(host)
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: host + '/views/main.html',
         controller: 'MainCtrl'
       })
       .when('/questions', {
-        templateUrl: 'views/questions.html',
+        templateUrl: host + '/views/questions.html',
         controller: 'QuestionsCtrl'
       })
       .when('/results', {
-        templateUrl: 'views/results.html',
+        templateUrl: host + '/views/results.html',
         controller: 'ResultsCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
+  }).run(function ($rootScope) {
+    $rootScope.live = host
   });
 
 
