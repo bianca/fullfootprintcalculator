@@ -8,7 +8,7 @@
  * Controller of the goodfellowsApp
  */
 angular.module('ffpApp')
-  .controller('QuestionsCtrl', function ($scope, $http, $location, $rootScope) {
+  .controller('QuestionsCtrl', function ($scope, $http, $location, $rootScope,$window) {
 
   	$scope.pointer = 1
   	$scope.currentquestion = null
