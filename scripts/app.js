@@ -26,7 +26,6 @@ var App = angular
   .config(function ($routeProvider, $httpProvider, $sceDelegateProvider) {
     //$httpProvider.defaults.useXDomain = true;
     //$sceDelegateProvider.resourceUrlWhitelist(['http://calculator.fullfootprint.org/*']);
-    console.log(host)
     $routeProvider
       .when('/', {
         templateUrl: host + '/views/main.html',
@@ -45,6 +44,7 @@ var App = angular
       });
   }).run(function ($rootScope) {
     $rootScope.live = host
+        console.log(host, $rootScope.live)
   });
 
 
