@@ -28,15 +28,15 @@ var App = angular
     //$sceDelegateProvider.resourceUrlWhitelist(['http://calculator.fullfootprint.org/*']);
     $routeProvider
       .when('/', {
-        templateUrl: host + '/views/main.html',
+        templateUrl: '/views/main.html',
         controller: 'MainCtrl'
       })
       .when('/questions', {
-        templateUrl: host + '/views/questions.html',
+        templateUrl: '/views/questions.html',
         controller: 'QuestionsCtrl'
       })
       .when('/results', {
-        templateUrl: host + '/views/results.html',
+        templateUrl: '/views/results.html',
         controller: 'ResultsCtrl'
       })
       .otherwise({
