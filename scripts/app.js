@@ -44,7 +44,6 @@ var App = angular
       });
   }).run(function ($rootScope) {
     $rootScope.live = host
-        console.log(host, $rootScope.live)
   });
 
 
