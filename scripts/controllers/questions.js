@@ -30,7 +30,7 @@ angular.module('ffpApp')
 	    } else {
 	    	//$location.url("http://www.fullfootprint.org/measure1.html#/results")
         $location.href = "http://www.fullfootprint.org/measure1.html#/results"
-        $scope.$apply()
+        //$scope.$apply()
 	    }
     }
 
