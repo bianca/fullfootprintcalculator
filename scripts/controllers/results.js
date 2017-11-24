@@ -355,6 +355,7 @@ angular.module('ffpApp')
     //    
             $("#offsetwindowframe").attr('src', offseturls[Object.keys($scope.sum)[num]]); 
             var checkifloaded = function(){ 
+              console.log($("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input"))
               if($("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input").length == 0) {
                 setTimeout(checkifloaded(), 1000);
               } else {
