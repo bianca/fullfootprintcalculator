@@ -353,6 +353,7 @@ angular.module('ffpApp')
 //
     //      //$http.post('http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]', data)
     //    
+            console.log(offseturls[Object.keys($scope.sum)[num]])
             $("#offsetwindowframe").attr('src', offseturls[Object.keys($scope.sum)[num]]); 
             var checkifloaded = function(){ 
               console.log($("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input"))
