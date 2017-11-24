@@ -17,6 +17,12 @@ angular.module('ffpApp')
 
     $rootScope.chosenTips = []
 
+
+    var offseturls = {
+      air: "http://www.fullfootprint.org/store/p18/kgcarbon",
+      land: "http://www.fullfootprint.org/store/p19/10m2",
+      water: "http://www.fullfootprint.org/store/p20/10gallons"
+    }
     $scope.grow = false
     $scope.tabulate = {
       land: {
@@ -316,35 +322,55 @@ angular.module('ffpApp')
     }
 
     $scope.offsetEach = function (num, percentage) {
-          var data = {jsonrpc: "2.0", method: "Checkout::addItem", params: ["18", "1", Math.floor($scope.sum[ Object.keys($scope.sum)[num] ]*percentage), {}], id: 0}
-          
-
-          // http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]&jsonrpc=2.0&method=Checkout::addItem&params:[18,1,100,{}]&id=0
-        $http({
-          url: 'http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]',
-          method: "POST",
-          data: data,
-        }, {
-          headers: {
-            "Accept" : "application/json, text/javascript, */*; q=0.01",
-            "Accept-Encoding" : "gzip, deflate",
-            "Accept-Language" : "en-US,en;q=0.8",
-            "Connection" : "keep-alive",
-            "Content-Type" : "application/json; charset=UTF-8",
-           "X-Requested-With" : "XMLHttpRequest"
-          },
-          dataType: "json"
-          //headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-        }).success(function(response) {
-              console.log("successful")
-              if ($scope.sum[ Object.keys($scope.sum)[num+1] ] in $scope.num) {
-                $scope.offsetEach(num+1)
+    //    
+    //      var data = {jsonrpc: "2.0", method: "Checkout::addItem", params: ["18", "1", Math.floor($scope.sum[ Object.keys($scope.sum)[num] ]*percentage), {}], id: 0}
+    //      
+//
+    //      // http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]&jsonrpc=2.0&method=Checkout::addItem&params:[18,1,100,{}]&id=0
+    //    $http({
+    //      url: 'http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]',
+    //      method: "POST",
+    //      data: data,
+    //    }, {
+    //      headers: {
+    //        "Accept" : "application/json, text/javascript, */*; q=0.01",
+    //        "Accept-Encoding" : "gzip, deflate",
+    //        "Accept-Language" : "en-US,en;q=0.8",
+    //        "Connection" : "keep-alive",
+    //        "Content-Type" : "application/json; charset=UTF-8",
+    //       "X-Requested-With" : "XMLHttpRequest"
+    //      },
+    //      dataType: "json"
+    //      //headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+    //    }).success(function(response) {
+    //          console.log("successful")
+    //          if ($scope.sum[ Object.keys($scope.sum)[num+1] ] in $scope.num) {
+    //            $scope.offsetEach(num+1)
+    //          } else {
+    //            $window.open('https://www-fullfootprint-org.checkout.weebly.com/#cart', '_blank');
+    //          }
+    //        });
+//
+    //      //$http.post('http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]', data)
+    //    
+            $("#offsetwindowframe").attr('src', offseturls[Object.keys($scope.sum)[num]]); 
+            var checkifloaded = function(){ 
+              if($("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input").length == 0) {
+                setTimeout(checkifloaded(), 1000);
               } else {
-                $window.open('https://www-fullfootprint-org.checkout.weebly.com/#cart', '_blank');
+                $("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input").val(Math.floor($scope.sum[ Object.keys($scope.sum)[num] ]*percentage))
+                $("#offsetwindowframe").contents().find("#wsite-com-product-add-to-cart")[0].click()  
+                if ($scope.sum[ Object.keys($scope.sum)[num+1] ] in $scope.num) {
+                  $scope.offsetEach(num+1)
+                } else {
+                  $("#offsetwindowframe").attr('src','https://www-fullfootprint-org.checkout.weebly.com/#cart');
+                }
+                return;
               }
-            });
+            }
+            checkifloaded()
+            
 
-          //$http.post('http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]', data)
         }
 
     $scope.offset = function (percentage) {
