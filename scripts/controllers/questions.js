@@ -28,7 +28,8 @@ angular.module('ffpApp')
 	    	$scope.currentquestion = $rootScope.questions[$scope.pointer]
         $scope.fl = !$scope.fl
 	    } else {
-	    	$location.url("http://www.fullfootprint.org/measure1.html#/results")
+	    	//$location.url("http://www.fullfootprint.org/measure1.html#/results")
+        $location.href = "http://www.fullfootprint.org/measure1.html#/results"
         $scope.$apply()
 	    }
     }
