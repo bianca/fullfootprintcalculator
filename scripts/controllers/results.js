@@ -354,7 +354,7 @@ angular.module('ffpApp')
     //      //$http.post('http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]', data)
     //    
             console.log(offseturls[Object.keys($scope.sum)[num]])
-            $("#offsetwindowframe").attr('src', offseturls[Object.keys($scope.sum)[num]]); 
+
             var checkifloaded = function(){ 
               console.log($("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input"))
               if($("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input").length == 0) {
@@ -363,6 +363,7 @@ angular.module('ffpApp')
                 $("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input").val(Math.floor($scope.sum[ Object.keys($scope.sum)[num] ]*percentage))
                 $("#offsetwindowframe").contents().find("#wsite-com-product-add-to-cart")[0].click()  
                 if (Object.keys($scope.sum)[num+1] in $scope.sum) {
+                  $( "#offsetwindowframe" ).unbind( "load", checkifloaded )
                   $scope.offsetEach(num+1, percentage)
                 } else {
                   $("#offsetwindowframe").attr('src','https://www-fullfootprint-org.checkout.weebly.com/#cart');
@@ -370,11 +371,15 @@ angular.module('ffpApp')
                   $(".footer-wrap").remove()
                 }
                 return;
+
               }
             }
-            checkifloaded()
-            
 
+            $("#offsetwindowframe").attr('src', offseturls[Object.keys($scope.sum)[num]]); 
+            $('#iframeid').load(function(){
+              alert('frame has (re)loaded');
+              checkifloaded()
+            });
         }
 
     $scope.offset = function (percentage) {
