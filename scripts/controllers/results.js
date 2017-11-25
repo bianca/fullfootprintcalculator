@@ -363,9 +363,11 @@ angular.module('ffpApp')
                 $("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input").val(Math.floor($scope.sum[ Object.keys($scope.sum)[num] ]*percentage))
                 $("#offsetwindowframe").contents().find("#wsite-com-product-add-to-cart")[0].click()  
                 if (Object.keys($scope.sum)[num+1] in $scope.sum) {
-                  $scope.offsetEach(num+1)
+                  $scope.offsetEach(num+1, percentage)
                 } else {
                   $("#offsetwindowframe").attr('src','https://www-fullfootprint-org.checkout.weebly.com/#cart');
+                  $(".header-wrap").remove()
+                  $(".footer-wrap").remove()
                 }
                 return;
               }
