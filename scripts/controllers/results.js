@@ -366,18 +366,20 @@ angular.module('ffpApp')
                   $( "#offsetwindowframe" ).unbind( "load", checkifloaded )
                   $scope.offsetEach(num+1, percentage)
                 } else {
-                  $("#offsetwindowframe").attr('src','https://www-fullfootprint-org.checkout.weebly.com/#cart');
-                  $(".header-wrap").remove()
-                  $(".footer-wrap").remove()
+                  $("#offsetwindowframe").attr('src','https://www-fullfootprint-org.checkout.weebly.com/#payment');
+                  
+                  var cleanup = function () {
+                    $(".header-wrap").remove()
+                    $(".footer-wrap").remove()
+                  }
+                  $('#offsetwindowframe').load(cleanup);
+
                 }
                 return;
 
               }
             }
-            $('#offsetwindowframe').load(function(){
-              alert('frame has (re)loaded');
-              checkifloaded()
-            });
+            $('#offsetwindowframe').load(checkifloaded);
             $("#offsetwindowframe").attr('src', offseturls[Object.keys($scope.sum)[num]]); 
 
         }
