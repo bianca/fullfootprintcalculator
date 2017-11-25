@@ -374,12 +374,12 @@ angular.module('ffpApp')
 
               }
             }
-
-            $("#offsetwindowframe").attr('src', offseturls[Object.keys($scope.sum)[num]]); 
-            $('#iframeid').load(function(){
+            $('#offsetwindowframe').load(function(){
               alert('frame has (re)loaded');
               checkifloaded()
             });
+            $("#offsetwindowframe").attr('src', offseturls[Object.keys($scope.sum)[num]]); 
+
         }
 
     $scope.offset = function (percentage) {
