@@ -371,6 +371,7 @@ angular.module('ffpApp')
                   var cleanup = function () {
                     $(".header-wrap").remove()
                     $(".footer-wrap").remove()
+                    $( "#offsetwindowframe" ).unbind( "load", cleanup )
                   }
                   $('#offsetwindowframe').load(cleanup);
 
