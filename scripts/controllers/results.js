@@ -375,7 +375,9 @@ angular.module('ffpApp')
                   }
                   //$('#offsetwindowframe').load(cleanup);
                   //$rootScope.buyOffsets = true
+                  console.log("try");
                   $window.open("https://www-fullfootprint-org.checkout.weebly.com/#payment", '_blank');
+                  console.log("done");
                 }
                 return;
 
