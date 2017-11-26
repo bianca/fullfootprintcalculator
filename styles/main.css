@@ -407,6 +407,7 @@ body {
   position: absolute;
   left: 0px;
   text-align: center;
+  bottom: 0px;
 }
 
 #offsetwindowframe {
@@ -420,6 +421,14 @@ body {
       float: left;
       clear: both;
     }
+}
+
+.sticky-footer-push {
+  height: 0px;
+}
+
+div > p { 
+    background-color: yellow;
 }
 
 
