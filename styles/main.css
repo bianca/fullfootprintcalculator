@@ -427,4 +427,9 @@ body {
   visibility: hidden;
 }
 
+.sticky-footer-push {
+  height: 0px;
+  visibility: hidden;
+}
+
 
