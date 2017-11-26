@@ -263,10 +263,16 @@
     right: 0;
     height: 100%;
     opacity: 1;
+    //background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(/images/splash.jpg);
+    //background-size: cover, cover;
+    //background-attachment: fixed;
+    z-index: 3000;
+}
+
+#calculator {
     background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(/images/splash.jpg);
     background-size: cover, cover;
     background-attachment: fixed;
-    z-index: 3000;
 }
 #calculator .fade.ng-enter,
 #calculator .fade.ng-leave {
@@ -386,11 +392,23 @@
   opacity: 0;
 }
 
+#offsetwindow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 3001;
+    transition: 1s;
+}
+
+#appFooter {
+  height: 100px;
+  width: 100%;
+}
+
 #offsetwindowframe {
   width: 100%;
   height: 1000px;
 }
-
 
 @media (max-width: 450px) { 
     #calculator div.answer {

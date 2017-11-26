@@ -374,6 +374,7 @@ angular.module('ffpApp')
                     $( "#offsetwindowframe" ).unbind( "load", cleanup )
                   }
                   $('#offsetwindowframe').load(cleanup);
+                  $rootScope.buyOffsets = true
 
                 }
                 return;

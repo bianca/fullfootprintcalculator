@@ -45,6 +45,8 @@ var App = angular
       });
   }).run(function ($rootScope) {
     $rootScope.live = host
+    $rootScope.buyOffsets = false
+    $rootScope.calculatorHeight = $window.innerHeight - 100
   });
 
 
