@@ -43,10 +43,11 @@ var App = angular
       .otherwise({
         redirectTo: '/'
       });
-  }).run(function ($rootScope) {
+  }).run(function ($rootScope, $window) {
     $rootScope.live = host
     $rootScope.buyOffsets = false
     $rootScope.calculatorHeight = $window.innerHeight - 100
+    $rootScope.appHeight = $window.innerHeight
   });
 
 
