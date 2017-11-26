@@ -1,10 +1,7 @@
 /* Space out content a bit */
-//body {
-//  background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(/images/splash.jpg);
-//  background-size: cover, cover;
-//  background-attachment: fixed;
-//
-//}
+body {
+  overflow: hidden;
+}
 
 #calculator .logo {
   background: url(/images/ffp.png);
@@ -273,6 +270,10 @@
     background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(/images/splash.jpg);
     background-size: cover, cover;
     background-attachment: fixed;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2999;
 }
 #calculator .fade.ng-enter,
 #calculator .fade.ng-leave {
