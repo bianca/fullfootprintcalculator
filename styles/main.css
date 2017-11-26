@@ -423,8 +423,8 @@ body {
     }
 }
 
-.sticky-footer-push {
-  height: 0px;
+#footer-wrap {
+  visibility: hidden;
 }
 
 
