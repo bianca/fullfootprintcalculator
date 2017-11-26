@@ -403,6 +403,9 @@
 #appFooter {
   height: 100px;
   width: 100%;
+  position: absolute;
+  left: 0px;
+  text-align: center;
 }
 
 #offsetwindowframe {
