@@ -366,16 +366,16 @@ angular.module('ffpApp')
                   $( "#offsetwindowframe" ).unbind( "load", checkifloaded )
                   $scope.offsetEach(num+1, percentage)
                 } else {
-                  $("#offsetwindowframe").attr('src','https://www-fullfootprint-org.checkout.weebly.com/#payment');
+                  //$("#offsetwindowframe").attr('src','https://www-fullfootprint-org.checkout.weebly.com/#payment');
                   
                   var cleanup = function () {
                     $(".header-wrap").remove()
                     $(".footer-wrap").remove()
                     $( "#offsetwindowframe" ).unbind( "load", cleanup )
                   }
-                  $('#offsetwindowframe').load(cleanup);
-                  $rootScope.buyOffsets = true
-
+                  //$('#offsetwindowframe').load(cleanup);
+                  //$rootScope.buyOffsets = true
+                  $window.open("https://www-fullfootprint-org.checkout.weebly.com/#payment", '_blank');
                 }
                 return;
 
@@ -383,6 +383,7 @@ angular.module('ffpApp')
             }
             $('#offsetwindowframe').load(checkifloaded);
             $("#offsetwindowframe").attr('src', offseturls[Object.keys($scope.sum)[num]]); 
+
 
         }
 
