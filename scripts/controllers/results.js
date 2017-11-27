@@ -325,6 +325,7 @@ angular.module('ffpApp')
         console.log("well, we tried")
         var p =angular.element($document[0].querySelector('#calculator'))
         $scope.a = true
+        $scope.s = 'lg'
         var modalInstance = $uibModal.open({
               animation: $scope.a,
               appendTo: p,
@@ -333,7 +334,7 @@ angular.module('ffpApp')
               templateUrl: 'http://calculator.fullfootprint.org/views/partials/modal.html',
               //controller: 'ModalInstanceCtrl',
               //controllerAs: '$ctrl'
-              size: 'lg'
+              size: $scope.s
 
             });
 
@@ -388,7 +389,7 @@ angular.module('ffpApp')
                 $("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input").val(Math.floor($scope.sum[ Object.keys($scope.sum)[num] ]*percentage))
                 $("#offsetwindowframe").contents().find("#wsite-com-product-add-to-cart")[0].click()  
                 if (Object.keys($scope.sum)[num+1] in $scope.sum) {
-                  $( "#offsetwindowframe" ).unbind( "load", checkifloaded )
+                  $( "#offsetwindowframe" ).unbind("load", checkifloaded )
                   $scope.offsetEach(num+1, percentage)
                 } else {
                   //$("#offsetwindowframe").attr('src','https://www-fullfootprint-org.checkout.weebly.com/#payment');
@@ -409,7 +410,7 @@ angular.module('ffpApp')
 
               }
             }
-            $('#offsetwindowframe').load(checkifloaded);
+            $('#offsetwindowframe').bind("load",checkifloaded);
             $("#offsetwindowframe").attr('src', offseturls[Object.keys($scope.sum)[num]]); 
 
 
