@@ -327,7 +327,7 @@ angular.module('ffpApp')
               animation: true,
               ariaLabelledBy: 'modal-title',
               ariaDescribedBy: 'modal-body',
-              templateUrl: 'modal.html',
+              templateUrl: 'http://calculator.fullfootprint.org/views/partials/modal.html',
               controller: 'ModalInstanceCtrl',
               controllerAs: '$ctrl'
               //size: size,
