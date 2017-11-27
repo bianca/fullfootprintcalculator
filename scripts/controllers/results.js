@@ -8,7 +8,7 @@
  * Controller of the goodfellowsApp
  */
 angular.module('ffpApp')
-  .controller('ResultsCtrl', function ($scope, $http, $location, $rootScope, $window, $modal) {
+  .controller('ResultsCtrl', function ($scope, $http, $location, $rootScope, $window, $uibModal) {
 
 	$http.get(host+'/json/tips.json').success(function(response) {
         $scope.tips = response.tips;
@@ -323,36 +323,23 @@ angular.module('ffpApp')
 
     $scope.openCart = function () {
 
-           $modal.open({
-              backdrop : 'static',
-              templateUrl: "views/partials/modal.html",
-              controller: function ($scope, $rootScope, $modalInstance) {
-                //  $rootScope._isModalOpen = true;
-                //  $scope.title = title;
-//
-                //  $scope.partial = partial;
-                //  for (var d in data) {
-                //    $scope[d] = data[d];
-                //  }
-                //  if (!$scope.wait) $scope.wait = true;
-                //  $scope.close = $rootScope.close = function () {
-                //    $rootScope._isModalOpen = false;
-                //    $modalInstance.close();
-                //    
-                //    if ($scope.message == "Label_NoServerMessageGuest") {
-                //      $rootScope.$emit("closeNoServerGuest");
-                //    }
-                //    $rootScope.safeApply();
-                //  };
-                //  if (theController != null) {
-                //     $.extend(true, this, $controller(theController, {$scope: $scope}));
-                //    for (var d in data) {
-                //      $scope[d] = data[d];
-                //    }
-                //  }
-              }
-          });
-          
+        var modalInstance = $uibModal.open({
+              animation: true,
+              ariaLabelledBy: 'modal-title',
+              ariaDescribedBy: 'modal-body',
+              templateUrl: 'myModalContent.html',
+              controller: 'ModalInstanceCtrl',
+              controllerAs: '$ctrl'
+              //size: size,
+              //appendTo: parentElem,
+
+            });
+
+            modalInstance.result.then(function (selectedItem) {
+              //$ctrl.selected = selectedItem;
+            }, function () {
+              $log.info('Modal dismissed at: ' + new Date());
+            });        
 
     }
 
