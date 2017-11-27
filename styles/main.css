@@ -435,4 +435,8 @@ body {
   visibility: hidden;
 }
 
+#insertedCart {
+  width: 100%;
+}
+
 
