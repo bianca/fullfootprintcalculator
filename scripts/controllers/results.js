@@ -322,21 +322,24 @@ angular.module('ffpApp')
     }
 
     $scope.openCart = function () {
-
+        console.log("well, we tried")
+        var p =angular.element($document[0].querySelector('#calculator'))
         var modalInstance = $uibModal.open({
               animation: true,
+              appendTo: p,
               ariaLabelledBy: 'modal-title',
               ariaDescribedBy: 'modal-body',
               templateUrl: 'http://calculator.fullfootprint.org/views/partials/modal.html',
               //controller: 'ModalInstanceCtrl',
               controllerAs: '$ctrl'
               //size: size,
-              //appendTo: parentElem,
+              appendTo: parentElem,
 
             });
 
-            modalInstance.result.then(function (selectedItem) {
+            modalInstance.result.then(function () {
               //$ctrl.selected = selectedItem;
+              console.log("okay...")
             }, function () {
               $log.info('Modal dismissed at: ' + new Date());
             });        
