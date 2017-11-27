@@ -21,7 +21,8 @@ var App = angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    'ui.bootstrap'
   ])
   .config(function ($locationProvider, $routeProvider, $httpProvider, $sceDelegateProvider) {
     //$httpProvider.defaults.useXDomain = true;
@@ -45,7 +46,9 @@ var App = angular
       });
   }).run(function ($rootScope, $window) {
     $rootScope.live = host
-    $rootScope.buyOffsets = false
+    $rootScope.hideshow = {
+      buyOffsets : false
+    }
     $rootScope.calculatorHeight = $window.innerHeight - 100
     $rootScope.appHeight = $window.innerHeight
   });

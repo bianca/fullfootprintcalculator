@@ -8,7 +8,7 @@
  * Controller of the goodfellowsApp
  */
 angular.module('ffpApp')
-  .controller('ResultsCtrl', function ($scope, $http, $location, $rootScope, $window) {
+  .controller('ResultsCtrl', function ($scope, $http, $location, $rootScope, $window, $modal) {
 
 	$http.get(host+'/json/tips.json').success(function(response) {
         $scope.tips = response.tips;
@@ -321,6 +321,41 @@ angular.module('ffpApp')
         }
     }
 
+    $scope.openCart = function () {
+
+           $modal.open({
+              backdrop : 'static',
+              templateUrl: "views/partials/modal.html",
+              controller: function ($scope, $rootScope, $modalInstance) {
+                //  $rootScope._isModalOpen = true;
+                //  $scope.title = title;
+//
+                //  $scope.partial = partial;
+                //  for (var d in data) {
+                //    $scope[d] = data[d];
+                //  }
+                //  if (!$scope.wait) $scope.wait = true;
+                //  $scope.close = $rootScope.close = function () {
+                //    $rootScope._isModalOpen = false;
+                //    $modalInstance.close();
+                //    
+                //    if ($scope.message == "Label_NoServerMessageGuest") {
+                //      $rootScope.$emit("closeNoServerGuest");
+                //    }
+                //    $rootScope.safeApply();
+                //  };
+                //  if (theController != null) {
+                //     $.extend(true, this, $controller(theController, {$scope: $scope}));
+                //    for (var d in data) {
+                //      $scope[d] = data[d];
+                //    }
+                //  }
+              }
+          });
+          
+
+    }
+
     $scope.offsetEach = function (num, percentage) {
     //    
     //      var data = {jsonrpc: "2.0", method: "Checkout::addItem", params: ["18", "1", Math.floor($scope.sum[ Object.keys($scope.sum)[num] ]*percentage), {}], id: 0}
@@ -368,16 +403,17 @@ angular.module('ffpApp')
                 } else {
                   //$("#offsetwindowframe").attr('src','https://www-fullfootprint-org.checkout.weebly.com/#payment');
                   
-                  var cleanup = function () {
-                    $(".header-wrap").remove()
-                    $(".footer-wrap").remove()
-                    $( "#offsetwindowframe" ).unbind( "load", cleanup )
-                  }
-                  //$('#offsetwindowframe').load(cleanup);
-                  //$rootScope.buyOffsets = true
-                  console.log("try");
-                  $window.open("https://www-fullfootprint-org.checkout.weebly.com/#payment", '_blank');
-                  console.log("done");
+                //  var cleanup = function () {
+                //    $(".header-wrap").remove()
+                //    $(".footer-wrap").remove()
+                //    $( "#offsetwindowframe" ).unbind( "load", cleanup )
+                //  }
+                //  $('#offsetwindowframe').load(cleanup);
+                  $scope.openCart()
+                  //$rootScope.hideshow.buyOffsets = true
+                  //console.log("try");
+                  //$window.open("https://www-fullfootprint-org.checkout.weebly.com/#payment", '_blank');
+                  //console.log("done");
                 }
                 return;
 
