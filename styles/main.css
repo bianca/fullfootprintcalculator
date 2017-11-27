@@ -439,4 +439,7 @@ body {
   width: 100%;
 }
 
+.modal-dialog {
+  width: 95%;
+}
 
