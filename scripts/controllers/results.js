@@ -8,7 +8,7 @@
  * Controller of the goodfellowsApp
  */
 angular.module('ffpApp')
-  .controller('ResultsCtrl', function ($scope, $http, $location, $rootScope, $window, $uibModal) {
+  .controller('ResultsCtrl', function ($scope, $http, $location, $rootScope, $window, $uibModal, $document) {
 
 	$http.get(host+'/json/tips.json').success(function(response) {
         $scope.tips = response.tips;
