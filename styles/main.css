@@ -263,7 +263,7 @@ body {
     //background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(/images/splash.jpg);
     //background-size: cover, cover;
     //background-attachment: fixed;
-    z-index: 3000;
+    z-index: 1000;
 }
 
 #calculator {
@@ -273,7 +273,7 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 2999;
+    z-index: 999;
 }
 #calculator .fade.ng-enter,
 #calculator .fade.ng-leave {
@@ -394,10 +394,6 @@ body {
 }
 
 #offsetwindow {
-    //position: absolute;
-    //top: 0;
-    //left: 0;
-    //z-index: 3001;
     transition: 1s;
     width: 90%;
     margin: 5%;
