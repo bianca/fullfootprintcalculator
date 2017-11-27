@@ -327,7 +327,7 @@ angular.module('ffpApp')
               animation: true,
               ariaLabelledBy: 'modal-title',
               ariaDescribedBy: 'modal-body',
-              templateUrl: 'myModalContent.html',
+              templateUrl: 'modal.html',
               controller: 'ModalInstanceCtrl',
               controllerAs: '$ctrl'
               //size: size,
