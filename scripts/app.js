@@ -23,8 +23,11 @@ var App = angular
     'ngSanitize',
     'ngTouch',
     'ui.bootstrap'
-  ])
-  .config(function ($locationProvider, $routeProvider, $httpProvider, $sceDelegateProvider) {
+  ]);
+
+
+
+  App.config(function ($locationProvider, $routeProvider, $httpProvider, $sceDelegateProvider) {
     //$httpProvider.defaults.useXDomain = true;
     //$sceDelegateProvider.resourceUrlWhitelist(['http://calculator.fullfootprint.org/*']);
     $locationProvider.html5Mode(true);
