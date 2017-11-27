@@ -333,7 +333,6 @@ angular.module('ffpApp')
               //controller: 'ModalInstanceCtrl',
               controllerAs: '$ctrl'
               //size: size,
-              appendTo: parentElem,
 
             });
 
