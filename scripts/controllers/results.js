@@ -383,9 +383,9 @@ angular.module('ffpApp')
 
             var checkifloaded = function(){ 
               console.log($("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input"))
-              if($("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input").length == 0) {
-                setTimeout(checkifloaded(), 1000);
-              } else {
+              //if($("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input").length == 0) {
+              //  setTimeout(checkifloaded(), 1000);
+              //} else {
                 $("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input").val(Math.floor($scope.sum[ Object.keys($scope.sum)[num] ]*percentage))
                 $("#offsetwindowframe").contents().find("#wsite-com-product-add-to-cart")[0].click()  
                 if (Object.keys($scope.sum)[num+1] in $scope.sum) {
@@ -408,7 +408,7 @@ angular.module('ffpApp')
                 }
                 return;
 
-              }
+              //}
             }
             $('#offsetwindowframe').bind("load",checkifloaded);
             $("#offsetwindowframe").attr('src', offseturls[Object.keys($scope.sum)[num]]); 
