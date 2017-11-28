@@ -8,7 +8,7 @@
  * Controller of the goodfellowsApp
  */
 angular.module('ffpApp')
-  .controller('ResultsCtrl', function ($scope, $http, $location, $rootScope, $window, $uibModal, $document) {
+  .controller('ResultsCtrl', function ($scope, $http, $location, $rootScope, $window, $uibModal, $document, $cookies) {
 
 	$http.get(host+'/json/tips.json').success(function(response) {
         $scope.tips = response.tips;
@@ -417,6 +417,9 @@ angular.module('ffpApp')
         }
 
     $scope.offset = function (percentage) {
+      angular.forEach($cookies, function (v, k) {
+          $cookies.remove(k);
+      });
       $scope.offsetEach(0, (percentage/365))
     }
 
