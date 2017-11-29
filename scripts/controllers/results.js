@@ -352,7 +352,7 @@ angular.module('ffpApp')
     var checkifloaded = function(){ 
         var u = $("#offsetwindowframe").attr('src')
         console.log(u, $scope.iterate, offseturls)
-        if (offseturls.indexOf(u) !== -1) {
+        if (offseturls.indexOf(u) == offseturls[0] || offseturls.indexOf(u) == offseturls[1] || offseturls.indexOf(u) == offseturls[2]) {
 
           var amt = Math.floor($scope.sum[ Object.keys($scope.sum)[$scope.iterate] ]*$scope.offsetbypercentage)
           console.log(Object.keys($scope.sum)[$scope.iterate], amt)
