@@ -352,6 +352,7 @@ angular.module('ffpApp')
     var checkifloaded = function(){ 
         var u = $("#offsetwindowframe").attr('src')
         console.log(u, $scope.iterate, offseturls)
+        console.log(u == offseturls['air'], u == offseturls['land'], u == offseturls['water'])
         if (u == offseturls['air'] || u == offseturls['land'] || u == offseturls['water']) {
           console.log("pass")
           var amt = Math.floor($scope.sum[ offsettypes[$scope.iterate] ]*$scope.offsetbypercentage)
