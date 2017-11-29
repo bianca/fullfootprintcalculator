@@ -353,7 +353,7 @@ angular.module('ffpApp')
         var u = $("#offsetwindowframe").attr('src')
         console.log(u, $scope.iterate, offseturls)
         if (u == offseturls['air'] || u == offseturls['land'] || u == offseturls['carbon']) {
-
+          console.log("pass")
           var amt = Math.floor($scope.sum[ Object.keys($scope.sum)[$scope.iterate] ]*$scope.offsetbypercentage)
           console.log(Object.keys($scope.sum)[$scope.iterate], amt)
           $("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input").val(amt)
@@ -361,8 +361,10 @@ angular.module('ffpApp')
           if (Object.keys($scope.sum)[$scope.iterate+1] in $scope.sum) {
             //$( "#offsetwindowframe" ).unbind("load")
             $scope.iterate++
+            console.log("offset more")
             $scope.offsetEach()
           } else {
+            console.log("opencart")
             $scope.openCart()
           }
           return;
