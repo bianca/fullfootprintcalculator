@@ -347,80 +347,39 @@ angular.module('ffpApp')
 
     }
 
-    $scope.offsetEach = function (num, percentage) {
-    //    
-    //      var data = {jsonrpc: "2.0", method: "Checkout::addItem", params: ["18", "1", Math.floor($scope.sum[ Object.keys($scope.sum)[num] ]*percentage), {}], id: 0}
-    //      
-//
-    //      // http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]&jsonrpc=2.0&method=Checkout::addItem&params:[18,1,100,{}]&id=0
-    //    $http({
-    //      url: 'http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]',
-    //      method: "POST",
-    //      data: data,
-    //    }, {
-    //      headers: {
-    //        "Accept" : "application/json, text/javascript, */*; q=0.01",
-    //        "Accept-Encoding" : "gzip, deflate",
-    //        "Accept-Language" : "en-US,en;q=0.8",
-    //        "Connection" : "keep-alive",
-    //        "Content-Type" : "application/json; charset=UTF-8",
-    //       "X-Requested-With" : "XMLHttpRequest"
-    //      },
-    //      dataType: "json"
-    //      //headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-    //    }).success(function(response) {
-    //          console.log("successful")
-    //          if ($scope.sum[ Object.keys($scope.sum)[num+1] ] in $scope.num) {
-    //            $scope.offsetEach(num+1)
-    //          } else {
-    //            $window.open('https://www-fullfootprint-org.checkout.weebly.com/#cart', '_blank');
-    //          }
-    //        });
-//
-    //      //$http.post('http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]', data)
-    //    
-            console.log(offseturls[Object.keys($scope.sum)[num]])
-
-            var checkifloaded = function(){ 
-              console.log($("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input"))
-              //if($("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input").length == 0) {
-              //  setTimeout(checkifloaded(), 1000);
-              //} else {
-                $("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input").val(Math.floor($scope.sum[ Object.keys($scope.sum)[num] ]*percentage))
-                $("#offsetwindowframe").contents().find("#wsite-com-product-add-to-cart")[0].click()  
-                if (Object.keys($scope.sum)[num+1] in $scope.sum) {
-                  $( "#offsetwindowframe" ).unbind("load")
-                  $scope.offsetEach(num+1, percentage)
-                } else {
-                  //$("#offsetwindowframe").attr('src','https://www-fullfootprint-org.checkout.weebly.com/#payment');
-                  
-                //  var cleanup = function () {
-                //    $(".header-wrap").remove()
-                //    $(".footer-wrap").remove()
-                //    $( "#offsetwindowframe" ).unbind( "load", cleanup )
-                //  }
-                //  $('#offsetwindowframe').load(cleanup);
-                  $scope.openCart()
-                  //$rootScope.hideshow.buyOffsets = true
-                  //console.log("try");
-                  //$window.open("https://www-fullfootprint-org.checkout.weebly.com/#payment", '_blank');
-                  //console.log("done");
-                }
-                return;
-
-              //}
-            }
-            $('#offsetwindowframe').bind("load",checkifloaded);
-            $("#offsetwindowframe").attr('src', offseturls[Object.keys($scope.sum)[num]]); 
-
+    $scope.iterate = 0
+    $scope.offsetbypercentage = 0;
+    var checkifloaded = function(){ 
+        var u = $("#offsetwindowframe").attr('src')
+        console.log(u, $scope.iterate, offseturls)
+        if (u in offseturls) {
+          var amt = Math.floor($scope.sum[ Object.keys($scope.sum)[$scope.iterate] ]*$scope.offsetbypercentage)
+          console.log(Object.keys($scope.sum)[$scope.iterate], amt)
+          $("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input").val(amt)
+          $("#offsetwindowframe").contents().find("#wsite-com-product-add-to-cart")[0].click()  
+          if (Object.keys($scope.sum)[$scope.iterate+1] in $scope.sum) {
+            //$( "#offsetwindowframe" ).unbind("load")
+            $scope.iterate++
+            $scope.offsetEach()
+          } else {
+            $scope.openCart()
+          }
+          return;
 
         }
+    }
+    $('#offsetwindowframe').bind("load",checkifloaded);
+    $scope.offsetEach = function (num, percentage) {    
+      $("#offsetwindowframe").attr('src', offseturls[Object.keys($scope.sum)[$scope.iterate]]); 
+    }
 
     $scope.offset = function (percentage) {
+      $scope.iterate = 0
+      $scope.offsetbypercentage = percentage
       angular.forEach($cookies, function (v, k) {
           $cookies.remove(k);
       });
-      $scope.offsetEach(0, (percentage/365))
+      $scope.offsetEach((percentage/365))
     }
 
   });
