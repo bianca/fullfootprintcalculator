@@ -346,19 +346,19 @@ angular.module('ffpApp')
            //});        
 
     }
-
-    $scope.iterate = 0
+    var offsettypes = ['air','land','water']
+    $scope.iterate = 0;
     $scope.offsetbypercentage = 0;
     var checkifloaded = function(){ 
         var u = $("#offsetwindowframe").attr('src')
         console.log(u, $scope.iterate, offseturls)
-        if (u == offseturls['air'] || u == offseturls['land'] || u == offseturls['carbon']) {
+        if (u == offseturls['air'] || u == offseturls['land'] || u == offseturls['water']) {
           console.log("pass")
-          var amt = Math.floor($scope.sum[ Object.keys($scope.sum)[$scope.iterate] ]*$scope.offsetbypercentage)
-          console.log(Object.keys($scope.sum)[$scope.iterate], amt)
+          var amt = Math.floor($scope.sum[ offsettypes[$scope.iterate] ]*$scope.offsetbypercentage)
+          console.log(offsettypes[$scope.iterate], amt)
           $("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input").val(amt)
           $("#offsetwindowframe").contents().find("#wsite-com-product-add-to-cart")[0].click()  
-          if (Object.keys($scope.sum)[$scope.iterate+1] in $scope.sum) {
+          if (offsettypes[$scope.iterate+1] in offsettypes) {
             //$( "#offsetwindowframe" ).unbind("load")
             $scope.iterate++
             console.log("offset more")
