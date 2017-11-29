@@ -352,7 +352,8 @@ angular.module('ffpApp')
     var checkifloaded = function(){ 
         var u = $("#offsetwindowframe").attr('src')
         console.log(u, $scope.iterate, offseturls)
-        if (u in offseturls) {
+        if (offseturls.indexOf(u) !== -1) {
+
           var amt = Math.floor($scope.sum[ Object.keys($scope.sum)[$scope.iterate] ]*$scope.offsetbypercentage)
           console.log(Object.keys($scope.sum)[$scope.iterate], amt)
           $("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input").val(amt)
