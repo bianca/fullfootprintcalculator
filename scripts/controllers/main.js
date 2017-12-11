@@ -15,6 +15,8 @@ angular.module('ffpApp')
  	console.log(check)
  	if (check != "www.fullfootprint.org") {
 	  $rootScope.localhref = ""
-	} 
+	} else {
+	  $rootScope.localhref = "http://www.fullfootprint.org/calculator"	
+	}
 	console.log($rootScope.localhref)
   });

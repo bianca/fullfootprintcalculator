@@ -12,7 +12,7 @@ var host = window.location.hostname;
 if (host == "localhost") {
   host = ""
 } else if (host == "www.fullfootprint.org") {
-  host = "http://calculator.fullfootprint.org"
+  host = "http://calculator.fullfootprint.org/"
 }
 var App = angular
   .module('ffpApp', [
@@ -33,15 +33,15 @@ var App = angular
     $locationProvider.html5Mode(true);
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: host+'views/main.html',
         controller: 'MainCtrl'
       })
       .when('/questions', {
-        templateUrl: 'views/questions.html',
+        templateUrl: host+'views/questions.html',
         controller: 'QuestionsCtrl'
       })
       .when('/results', {
-        templateUrl: 'views/results.html',
+        templateUrl: host+'views/results.html',
         controller: 'ResultsCtrl'
       })
       .otherwise({
@@ -54,6 +54,11 @@ var App = angular
     }
     $rootScope.calculatorHeight = $window.innerHeight - 100
     $rootScope.appHeight = $window.innerHeight
+    $rootScope.$on('$stateChangeStart', 
+    function(event, toState, toParams, fromState, fromParams){
+       event.preventDefault();
+       //window.history.forward();
+    });
   });
 
 
