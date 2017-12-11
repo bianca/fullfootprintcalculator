@@ -168,10 +168,16 @@ angular.module('ffpApp')
         }
       } 
 
+
+//      $scope.convert = {
+//        "air":5.192,
+//        "land": 1.709,
+//        "water": 2500
+//      }
       $scope.convert = {
-        "air":5.192,
-        "land": 1.709,
-        "water": 2500
+        "air": 1000,
+        "land": 1000,
+        "water": 220
       }
       $scope.convertedValues = {
         "air": 0,
@@ -236,37 +242,6 @@ angular.module('ffpApp')
     $scope.calculate = function () {
       var q = $rootScope.questions
       var p = $scope.proportions
-      /*
-      $scope.tabulate = {
-        land: {
-          housing : p.housing.land*q[1].answer.land*q[2].answer.land*q[3].answer.land*q[4].answer.land,
-          mobility : p.mobility*q[1].answer.land*q[5].answer.land,
-          holidays : p.holidays.land*q[1].answer.land*q[6].answer.land,
-          foodDrink : p.foodDrink.land*q[1].answer.land*q[7].answer.land,
-          otherGoods : p.otherGoods.land*q[1].answer.land*q[9].answer.land,
-          healthEducation : p.healthEducation.land*q[1].answer.land,
-          otherInfrastructure : p.otherInfrastructure*q[1].answer.land
-        },
-        air: {
-          housing : p.housing.air*q[1].answer.air*q[2].answer.air*q[3].answer.air,
-          mobility : p.mobility*q[1].answer.air*q[5].answer.air,
-          holidays : p.holidays.air*q[1].answer.air*q[6].answer.air,
-          foodDrink : p.foodDrink.air*q[1].answer.air*q[7].answer.air,
-          otherGoods : p.otherGoods.air*q[1].answer.air*q[9].answer.air,
-          healthEducation : p.healthEducation.air*q[1].answer.air,
-          otherInfrastructure : p.otherInfrastructure*q[1].answer.air
-        },
-        water: {
-          housing : p.housing.water[q[1].answer.shortanswer]*q[1].answer.water*q[2].answer.water*q[3].answer.water,
-          mobility : p.mobility*q[1].answer.water*q[5].answer.water,
-          holidays : p.holidays.water*q[1].answer.water*q[6].answer.water,
-          foodDrink : p.foodDrink.water[q[1].answer.shortanswer]*q[1].answer.water*q[7].answer.water,
-          otherGoods : p.otherGoods.water[q[1].answer.shortanswer]*q[1].answer.water*q[9].answer.water,
-          healthEducation : p.healthEducation.water*q[1].answer.water,
-          otherInfrastructure : p.otherInfrastructure*q[1].answer.water
-        }
-      } 
-      */
       for (var metric in $scope.multipliers) {
         var addup = 0;
         for (var category in $scope.multipliers[metric]) {
@@ -301,11 +276,9 @@ angular.module('ffpApp')
 
 
       for (var metric in $scope.relativeTotal) {
-         $scope.convertedValues[metric] = Math.floor($scope.sum[metric]/$scope.convert[metric])
-
-         $scope.relativeTotal[metric] = Math.max(Math.floor(150*$scope.sum[metric]/$rootScope.basesizes[metric].max),50)
-         console.log($scope.relativeTotal[metric])
-         console.log($scope.sum[metric],$rootScope.basesizes[metric].max, ($scope.sum[metric]/$rootScope.basesizes[metric].max), $scope.relativeTotal[metric])
+         //$scope.convertedValues[metric] = Math.floor($scope.sum[metric]/$scope.convert[metric])
+         $scope.convertedValues[metric] = Math.floor($scope.sum[metric]*$scope.convert[metric])
+         $scope.relativeTotal[metric] = Math.max(Math.floor(150*$scope.sum[metric]/$rootScope.basesizes[metric].max),50)         
          $scope.relativeOffset[metric] = $scope.relativeTotal[metric] > 100 ? (($scope.relativeTotal[metric])-100)/2 : 0
          $scope.relativeLine[metric] = Math.min($scope.relativeTotal[metric]*2.95,295)
       }
@@ -322,7 +295,6 @@ angular.module('ffpApp')
     }
 
     $scope.openCart = function () {
-        console.log("well, we tried")
         var p =angular.element($document[0].querySelector('#calculator'))
         $scope.a = true
         $scope.s = 'lg'
@@ -337,13 +309,7 @@ angular.module('ffpApp')
               size: $scope.s
 
             });
-
-           //modalInstance.result.then(function () {
-           //  //$ctrl.selected = selectedItem;
-           //  console.log("okay...")
-           //}, function () {
-           //  $log.info('Modal dismissed at: ' + new Date());
-           //});        
+        $("#insertedCart").attr('src')
 
     }
     var offsettypes = ['air','land','water']
@@ -362,7 +328,6 @@ angular.module('ffpApp')
           tp = 'water'
         }
         if (tp != "") {
-          console.log("pass")
           var amt = Math.floor($scope.sum[ tp ]*$scope.offsetbypercentage)
           console.log(tp, amt)
           $("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input").val(amt)
