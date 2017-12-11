@@ -2,63 +2,82 @@
 	"tips" : {
 		"1"	: {
 			"tip" : "Switch to a renewable energy supplier for your home",
+			"learnmore" : "www.fullfootprint.org/energysupplier",
 			"category" : "home"
 			},
 		"2" : {
-			"tip" : "Conduct your own home energy audit: seal any cracks, unplug unused appliances, and",
+			"tip" : "Conduct your own home energy audit: seal any cracks and unplug unused appliances",
+			"learnmore" : "http://www.fullfootprint.org/chillaudit",
 			"category" : "home"
 			},
 		"3"	: {
 			"tip" : "Switch to LED lights in your home",
+			"learnmore" : "http://www.fullfootprint.org/switchlights",
 			"category" : "home"
 			},
 		"4" : {
 			"tip" : "Have a shower instead of a bath",
+			"learnmore" : "http://www.fullfootprint.org/showerless",
 			"category" : "home"
 			},
 		"5" : {
 			"tip" : "Try to find alternatives to driving where possible. Consider riding a bike or getting public transport",
+			"learnmore" : "http://www.fullfootprint.org/carless",
 			"category" : "transportation"
 			},
 		"6" : {
 			"tip" : "Drive a low carbon vehicle",
+			"learnmore" : "http://www.fullfootprint.org/drivebetter",
 			"category" : "transportation"
 			},	
 		"7" : {
 			"tip" : "Adjust your driving style. You can reduce fuel consumption by not speeding and accelerating unnecessarily",
+			"learnmore" : "http://www.fullfootprint.org/flyless",
 			"category" : "transportation"
 			},
 		"8" : {	
 			"tip" : "If you need to fly, always fly economy and fly direct rather than stopping over",
+			"learnmore" : "http://www.fullfootprint.org/flybetter",
 			"category" : "transportation"
 			},
 		"9" : {
 			"tip" : "Reduce your beef and dairy consumption",
+			"learnmore" : "http://www.fullfootprint.org/lessmeat",
 			"category" : "food"
 			}, 
 		"10" : {
 			"tip" : "Eat more locally produced food or consider growing your own",
+			"learnmore" : "http://www.fullfootprint.org/eatlocal",
 			"category" : "food"
 			},
 		"11" : {
 			"tip" : "Don't throw food away. Make sure you only buy and cook what is necessary.",
+			"learnmore" : "http://www.fullfootprint.org/foodwaste",
 			"category" : "food"
 			},
 		"12" : {
-			"tip" : "Reduce the number of goods you buy. Extraction of resources, manufacturing, transport and disposal of goods has a huge environmental impact",
+			"tip" : "Reduce the number of goods you buy. Resources, manufacturing, transport, and disposal of goods have a huge environmental impact",
+			"learnmore" : "http://www.fullfootprint.org/buyless",
 			"category" : "waste"
 			},
 		"13" : {
 			"tip" : "Reuse or recycle the products you already have, or buy second hand",
+			"learnmore" : "http://www.fullfootprint.org/recycling",
 			"category" : "waste"
 			}, 
 		"14" : {
 			"tip" : "Eliminate junk mail by unsubscribing from mailing lists",
+			"learnmore" : "http://www.fullfootprint.org/sharing",
 			"category" : "waste"
 			},
 		"15" : {
-			"tip" : "Bring your own bags and buy in bulk where possible to reduce packaging",
+			"tip" : "Try to organize occasional community dropoffs/pickups for items such as electronic waste",
+			"learnmore" : "http://www.fullfootprint.org/communityrecycling",
 			"category" : "waste"
+			},
+		"16" : {
+			"tip" : "Encourage your community members, local organizations, and government to make greener choices through social media, letter writing, and word of mouth",
+			"learnmore" : "http://www.fullfootprint.org/activecitizen"
 			},
 		"16" : {
 			"tip" : "Ask Full Footprint about further reductions"

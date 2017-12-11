@@ -1,3 +1,7 @@
+<style>
+   body { overflow: overlay; }
+   #calculator { height: 100% !important; }
+</style>
 <div id="results_header">
 	You’re done! Here's what your lifetime footprint looks like:
 </div>
@@ -8,7 +12,7 @@
 				<div ng-init="grow=true" ng-class="{grow: grow}" class="results air" style="line-height: {{relativeLine.air-tipvalues}}px; width: {{relativeTotal.air-tipvalues}}%; height: {{relativeTotal.air-tipvalues}}%; margin-left: -{{relativeOffset.air-(tipvalues/2)}}%">
 					<span class="results_text" style="margin-top: {{relativeOffset.air-(tipvalues/2)}}%"><br />
 						<!--span class="bubble_subtitles">you've created enough GHGs to fill</span> <br /-->
-							<span style="display:block">{{sum.air}}</span> <br />
+							<span style="display:block">{{convertedValues.air}}</span> <br />
 						<span class="bubble_subtitles">kg GHGs</span>
 					</span>
 				</div>
@@ -22,8 +26,8 @@
 				<div ng-class="{grow: grow}" class="results land" style="line-height: {{relativeLine.land-tipvalues}}px; width: {{relativeTotal.land-tipvalues}}%; height: {{relativeTotal.land-tipvalues}}%; margin-left: -{{relativeOffset.land-(tipvalues/2)}}%">
 					<span class="results_text" style="margin-top: {{relativeOffset.land-(tipvalues/2)}}%">
 						<!--span class="bubble_subtitles">you consume enough land to require</span> <br /-->
-							<span style="display:block">{{sum.land}}</span> <br />
-						<span class="bubble_subtitles">Hectares land</span>
+							<span style="display:block">{{convertedValues.land}}</span> <br />
+						<span class="bubble_subtitles">m<sup>2</sup> land</span>
 					</span>
 				</div>
 			</div>	
@@ -36,8 +40,8 @@
 				<div ng-class="{grow: grow}" class="results water" style="line-height: {{relativeLine.water-tipvalues}}px;width: {{relativeTotal.water-tipvalues}}%; height: {{relativeTotal.water-tipvalues}}%; margin-left: -{{relativeOffset.water-(tipvalues/2)}}%">
 					<span class="results_text" style="margin-top: {{relativeOffset.water-(tipvalues/2)}}%">
 						<!--span class="bubble_subtitles">you've used enough water to fill</span> <br /-->
-							<span style="display:block">{{sum.water}}</span> <br /> 
-						<span class="bubble_subtitles">m<sup>3</sup> water</span>
+							<span style="display:block">{{convertedValues.water}}</span> <br /> 
+						<span class="bubble_subtitles">gallons water</span>
 					</span>
 				</div>
 			</div>
@@ -49,7 +53,7 @@ Things you could do to help:
 </div>
 <div id="tips">
 	<ul>
-	<li ng-repeat="tip in chosenTips"><div ng-class="{checked: tip.checked}" class="checkbox" ng-click="checktoggle(tip)"></div> {{tip.tip}}</li>
+	<li ng-repeat="tip in chosenTips"><div ng-class="{checked: tip.checked}" class="checkbox" ng-click="checktoggle(tip)"></div> {{tip.tip}} (<a href="{{tip.learnmore}}" target="_blank">learn more</a>) </li>
 	<li class="offset"><div class="checkbox"></div>Offset your emissions by:
 	</ul>
 </div>
