@@ -113,8 +113,8 @@ body {
 }
 
 #calculator div.checkbox {
-  width: 20px;
-  height: 20px;
+  width: 29px;
+  height: 30px;
   border: solid 3px #fff;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
@@ -443,3 +443,15 @@ body {
   width: 95%;
 }
 
+div#status .glyphicon {
+    font-size: 30px;
+    color: #87b2aa;
+    opacity: 0.6;
+    text-shadow: 2px 2px 8px #000;
+    transition: 2s;
+}
+
+div#status .glyphicon.done{
+    color: #fff;
+    //text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+}
