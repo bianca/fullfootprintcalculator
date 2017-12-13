@@ -379,7 +379,7 @@ angular.module('ffpApp')
             if ((num+1) in postorder) {
               $scope.offsetEach(num+1)
             } else {
-              $rootScope.urltouse= $("#wsite-com-minicart-checkout-button").attr("src")
+              $rootScope.urltouse= $("#wsite-com-minicart-checkout-button").attr("href")
               console.log($rootScope.urltouse)
               $scope.openCart()
               // $window.open('https://www-fullfootprint-org.checkout.weebly.com/#cart', '_blank');
