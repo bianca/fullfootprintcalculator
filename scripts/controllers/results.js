@@ -365,18 +365,22 @@ angular.module('ffpApp')
       });
       $scope.offsetEach((percentage/365))
     }
-
+  $rootScope.urltouse = ""
    var postorder = ['air','water','land']
    $scope.offsetEach = function (num, percentage) {
           console.log(num, postorder[num])
           console.log(Object.keys($scope.sum)[num])
           console.log($scope.sum[ postorder[num] ])
           console.log($scope.sum[ postorder[num] ]*percentage)
+
+
           var data = {jsonrpc: "2.0", method: "Checkout::addItem", params: [offsetitemids[postorder[num]], "1", Math.floor($scope.sum[ postorder[num] ]*percentage), {}], id: 0}
           $http.post('http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]', data).success(function(response) {
             if ((num+1) in postorder) {
               $scope.offsetEach(num+1)
             } else {
+              $rootScope.urltouse= $("#wsite-com-minicart-checkout-button").attr("src")
+              console.log($rootScope.urltouse)
               $scope.openCart()
               // $window.open('https://www-fullfootprint-org.checkout.weebly.com/#cart', '_blank');
             }
@@ -384,6 +388,7 @@ angular.module('ffpApp')
     }
 
     $scope.offset = function (percentage) {
+      $("#offsetwindowframe").attr('src', "http://www.fullfootprint.org/store/p18/kgcarbon"); 
       angular.forEach($cookies, function (v, k) {
           $cookies.remove(k);
       });
