@@ -310,7 +310,7 @@ angular.module('ffpApp')
               ariaLabelledBy: 'modal-title',
               ariaDescribedBy: 'modal-body',
               templateUrl: 'http://calculator.fullfootprint.org/views/partials/modal.html',
-              //controller: 'ModalInstanceCtrl',
+              controller: 'ModalCtrl',
               //controllerAs: '$ctrl'
               size: $scope.s
 
