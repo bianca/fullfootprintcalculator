@@ -29,7 +29,7 @@ var App = angular
 
   App.config(function ($locationProvider, $routeProvider, $httpProvider, $sceDelegateProvider) {
     //$httpProvider.defaults.useXDomain = true;
-    $sceDelegateProvider.resourceUrlWhitelist(['self','http://calculator.fullfootprint.org/*', 'http://calculator.fullfootprint.org/**']);
+    $sceDelegateProvider.resourceUrlWhitelist(['self','http://calculator.fullfootprint.org/*', 'http://calculator.fullfootprint.org/**','https://www-fullfootprint-org.checkout.weebly.com/**']);
     $locationProvider.html5Mode(true);
     $routeProvider
       .when('/', {
