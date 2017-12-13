@@ -315,7 +315,7 @@ angular.module('ffpApp')
               size: $scope.s
 
             });
-        $("#insertedCart").attr('src')
+        $("#insertedCart").attr('src', $rootScope.urltouse)
 
     }
     var offsettypes = ['air','land','water']
