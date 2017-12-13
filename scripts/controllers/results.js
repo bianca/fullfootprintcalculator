@@ -345,12 +345,13 @@ angular.module('ffpApp')
 
         }
     }
-    $('#offsetwindowframe').bind("load",checkifloaded);
-    $scope.offsetEach = function (num, percentage) {    
+    //$('#offsetwindowframe').bind("load",checkifloaded);
+    $scope.offsetEachold = function (num, percentage) {    
       $("#offsetwindowframe").attr('src', offseturls[Object.keys($scope.sum)[$scope.iterate]]); 
     }
 
-    $scope.offset = function (percentage) {
+    $scope.offsetold = function (percentage) {
+      console.log("offset...");
       $scope.iterate = 0
       $scope.offsetbypercentage = percentage
       angular.forEach($cookies, function (v, k) {
@@ -358,5 +359,25 @@ angular.module('ffpApp')
       });
       $scope.offsetEach((percentage/365))
     }
+
+   $scope.offsetEach = function (num, percentage) {
+          console.log(num)
+          console.log(Object.keys($scope.sum)[num])
+          console.log($scope.sum[ Object.keys($scope.sum)[num] ])
+          console.log($scope.sum[ Object.keys($scope.sum)[num] ]*percentage)
+          var data = {jsonrpc: "2.0", method: "Checkout::addItem", params: ["13", "1", Math.floor($scope.sum[ Object.keys($scope.sum)[num] ]*percentage), {}], id: 0}
+          $http.post('http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]', data).success(function(response) {
+            if ($scope.sum[ Object.keys($scope.sum)[num+1] ] in $scope.num) {
+              $scope.offsetEach(num+1)
+            } else {
+              $window.open('https://www-fullfootprint-org.checkout.weebly.com/#cart', '_blank');
+            }
+          });
+    }
+
+    $scope.offset = function (percentage) {
+      $scope.offsetEach(0, (percentage/365))
+    }
+
 
   });
