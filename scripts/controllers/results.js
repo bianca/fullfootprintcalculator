@@ -23,6 +23,12 @@ angular.module('ffpApp')
       land: "http://www.fullfootprint.org/store/p19/10m2",
       water: "http://www.fullfootprint.org/store/p20/10gallons"
     }
+
+    var offsetitemids = {
+      air: 18,
+      land: 19,
+      water: 20
+    }
     $scope.grow = false
     $scope.tabulate = {
       land: {
@@ -366,17 +372,21 @@ angular.module('ffpApp')
           console.log(Object.keys($scope.sum)[num])
           console.log($scope.sum[ postorder[num] ])
           console.log($scope.sum[ postorder[num] ]*percentage)
-          var data = {jsonrpc: "2.0", method: "Checkout::addItem", params: ["13", "1", Math.floor($scope.sum[ postorder[num] ]*percentage), {}], id: 0}
+          var data = {jsonrpc: "2.0", method: "Checkout::addItem", params: [offsetitemids[postorder[num]], "1", Math.floor($scope.sum[ postorder[num] ]*percentage), {}], id: 0}
           $http.post('http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]', data).success(function(response) {
             if ((num+1) in postorder) {
               $scope.offsetEach(num+1)
             } else {
-              $window.open('https://www-fullfootprint-org.checkout.weebly.com/#cart', '_blank');
+              $scope.openCart()
+              // $window.open('https://www-fullfootprint-org.checkout.weebly.com/#cart', '_blank');
             }
           });
     }
 
     $scope.offset = function (percentage) {
+      angular.forEach($cookies, function (v, k) {
+          $cookies.remove(k);
+      });
       $scope.offsetEach(0, (percentage/365))
     }
 
