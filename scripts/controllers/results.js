@@ -29,6 +29,11 @@ angular.module('ffpApp')
       land: 19,
       water: 20
     }
+    var offsetmultiplicationfactors = {
+      air: 1,
+      land: 10,
+      water: 10
+    }
     $scope.grow = false
     $scope.tabulate = {
       land: {
@@ -370,11 +375,16 @@ angular.module('ffpApp')
    $scope.offsetEach = function (num, percentage) {
           console.log(num, postorder[num])
           console.log(Object.keys($scope.sum)[num])
-          console.log($scope.sum[ postorder[num] ])
-          console.log($scope.sum[ postorder[num] ]*percentage)
+          console.log($scope.sum[ postorder[num] ] , "lifetime amount")
+          console.log($scope.sum[ postorder[num] ]/72 , "yearly amount")
+          console.log($scope.sum[ postorder[num] ]/72*percentage, "")
 
-
-          var data = {jsonrpc: "2.0", method: "Checkout::addItem", params: [offsetitemids[postorder[num]], "1", Math.floor($scope.sum[ postorder[num] ]*percentage), {}], id: 0}
+          // Calculate the number of units
+          // divide the lifetime calculated amount by 72 years to get the impact per year
+          // multiply that by the percentage of the year the user is offsetting
+          // multiply that by the factor that adjusts for the unit of measure used in the cart. while CO2 is by the kg, water is by the tens of gallons and land is by the tens of hectares
+          var buyunits = Math.floor($scope.sum[ postorder[num] ]/72*percentage*offsetmultiplicationfactors)
+          var data = {jsonrpc: "2.0", method: "Checkout::addItem", params: [offsetitemids[postorder[num]], "1", buyunits, {}], id: 0}
           $http.post('http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]', data).success(function(response) {
             if ((num+1) in postorder) {
               $scope.offsetEach(num+1)
