@@ -371,7 +371,7 @@ angular.module('ffpApp')
       });
       $scope.offsetEach((percentage/365))
     }
-  $rootScope.urltouse = "/views/loading.html"
+  $rootScope.urltouse = "http://calculator.fullfootprint.org/views/loading.html"
    var postorder = ['air','water','land']
    $scope.offsetEach = function (num, percentage) {
           console.log(num, postorder[num])
