@@ -396,7 +396,7 @@ angular.module('ffpApp')
               
               $http.get('http://www.fullfootprint.org/store/p18/kgcarbon').success(function(getresponse) {
                 var parser = new DOMParser();
-                var doc = parser.parseFromString(getresponse);
+                var doc = parser.parseFromString(getresponse, 'text/html');
                 var graburl = doc.firstChild.querySelectorAll('#wsite-com-minicart-checkout-button'); 
                 console.log(doc, graburl);
                 //var  html = $.parseHTML(getresponse);
