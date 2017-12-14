@@ -376,6 +376,7 @@ angular.module('ffpApp')
    $scope.offsetEach = function (num, percentage) {
           console.log(num, postorder[num])
           console.log(Object.keys($scope.sum)[num])
+          console.log(percentage, "percentage")
           console.log($scope.sum[ postorder[num] ] , "lifetime amount")
           console.log($scope.sum[ postorder[num] ]/72 , "yearly amount")
           console.log($scope.sum[ postorder[num] ]/72*percentage, "")
@@ -394,10 +395,14 @@ angular.module('ffpApp')
               
               
               $http.get('http://www.fullfootprint.org/store/p18/kgcarbon').success(function(getresponse) {
-                var  html = $.parseHTML(getresponse);
-                console.log(html, $(html))
-                console.log($(html).find("#wsite-com-minicart-checkout-button").attr("href"))
-                $rootScope.urltouse = $(html).find("#wsite-com-minicart-checkout-button").attr("href")
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(getresponse);
+                var graburl = doc.firstChild.querySelectorAll('#wsite-com-minicart-checkout-button'); 
+                console.log(doc, graburl);
+                //var  html = $.parseHTML(getresponse);
+                //console.log(html, $(html))
+                //console.log($(html).find("#wsite-com-minicart-checkout-button").attr("href"))
+                //$rootScope.urltouse = $(html).find("#wsite-com-minicart-checkout-button").attr("href")
 
               });
               
