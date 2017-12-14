@@ -285,6 +285,9 @@ angular.module('ffpApp')
         $scope.sum[metric] = Math.floor(addup)
       }
 
+      // $scope.sum is in the calculator units: gha, tCO2 and, m3
+      // we use $scope.convert to m2, kg, and gallons
+      // we display $scope.convertedValues
 
       for (var metric in $scope.relativeTotal) {
          //$scope.convertedValues[metric] = Math.floor($scope.sum[metric]/$scope.convert[metric])
@@ -379,11 +382,12 @@ angular.module('ffpApp')
           console.log($scope.sum[ postorder[num] ]/72 , "yearly amount")
           console.log($scope.sum[ postorder[num] ]/72*percentage, "")
 
-          // Calculate the number of units
+          // buyunites calculates the number of units to be purchased
           // divide the lifetime calculated amount by 72 years to get the impact per year
           // multiply that by the percentage of the year the user is offsetting
+          // $scope.sum is in the calculator units: gha, tCO2 and, m3
           // multiply that by the factor that adjusts for the unit of measure used in the cart. while CO2 is by the kg, water is by the tens of gallons and land is by the tens of hectares
-          var buyunits = Math.floor($scope.sum[ postorder[num] ]/72*percentage*offsetmultiplicationfactors)
+          var buyunits = Math.floor($scope.sum[ postorder[num] ]/72*percentage*offsetmultiplicationfactors[postorder[num]])
           var data = {jsonrpc: "2.0", method: "Checkout::addItem", params: [offsetitemids[postorder[num]], "1", buyunits, {}], id: 0}
           $http.post('http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]', data).success(function(response) {
             if ((num+1) in postorder) {
@@ -398,6 +402,12 @@ angular.module('ffpApp')
     }
 
     $scope.offset = function (percentage) {
+
+      $http.get('http://www.fullfootprint.org/store/p18/kgcarbon').success(function(response) {
+        console.log(response)
+      });
+
+
       $("#offsetwindowframe").attr('src', "http://www.fullfootprint.org/store/p18/kgcarbon"); 
       angular.forEach($cookies, function (v, k) {
           $cookies.remove(k);
