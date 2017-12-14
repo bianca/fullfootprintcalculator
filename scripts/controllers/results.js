@@ -393,8 +393,10 @@ angular.module('ffpApp')
             } else {
               
               
-              $http.get('http://www.fullfootprint.org/store/p18/kgcarbon').success(function(response) {
-                var  html = $.parseHTML(response);
+              $http.get('http://www.fullfootprint.org/store/p18/kgcarbon').success(function(getresponse) {
+                var  html = $.parseHTML(getresponse);
+                console.log(html, $(html))
+                console.log($(html).find("#wsite-com-minicart-checkout-button").attr("href"))
                 $rootScope.urltouse = $(html).find("#wsite-com-minicart-checkout-button").attr("href")
 
               });
