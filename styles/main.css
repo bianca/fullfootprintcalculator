@@ -354,6 +354,12 @@ body {
   opacity: 1;
 }
 
+#loader.fade-in-and-out {
+  -webkit-animation: fade-in-and-out 4s infinite;
+  animation: fade-in-and-out 4s infinite;
+  opacity: 1;
+}
+
 @-webkit-keyframes fade-in-and-out {
   0% { opacity: 1; }
   50% { opacity: 0; }

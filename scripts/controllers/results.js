@@ -323,8 +323,6 @@ angular.module('ffpApp')
               size: $scope.s
 
             });
-        $("#insertedCart").attr('src', $rootScope.urltouse)
-
     }
     var offsettypes = ['air','land','water']
     $scope.iterate = 0;
@@ -373,7 +371,7 @@ angular.module('ffpApp')
       });
       $scope.offsetEach((percentage/365))
     }
-  $rootScope.urltouse = ""
+  $rootScope.urltouse = "/views/loading.html"
    var postorder = ['air','water','land']
    $scope.offsetEach = function (num, percentage) {
           console.log(num, postorder[num])
@@ -393,21 +391,21 @@ angular.module('ffpApp')
             if ((num+1) in postorder) {
               $scope.offsetEach(num+1)
             } else {
-              $rootScope.urltouse= $("#wsite-com-minicart-checkout-button").attr("href")
-              console.log($rootScope.urltouse)
-              $scope.openCart()
+              
+              
+              $http.get('http://www.fullfootprint.org/store/p18/kgcarbon').success(function(response) {
+                var  html = $.parseHTML(response);
+                $rootScope.urltouse = $(html).find("#wsite-com-minicart-checkout-button").attr("href")
+
+              });
+              
               // $window.open('https://www-fullfootprint-org.checkout.weebly.com/#cart', '_blank');
             }
           });
     }
 
     $scope.offset = function (percentage) {
-
-      $http.get('http://www.fullfootprint.org/store/p18/kgcarbon').success(function(response) {
-        console.log(response)
-      });
-
-
+      $scope.openCart()
       $("#offsetwindowframe").attr('src', "http://www.fullfootprint.org/store/p18/kgcarbon"); 
       angular.forEach($cookies, function (v, k) {
           $cookies.remove(k);
