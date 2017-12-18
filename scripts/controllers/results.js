@@ -410,7 +410,7 @@ angular.module('ffpApp')
 
     $scope.offset = function (percentage) {
       $scope.openCart()
-      $http.get("https://www-fullfootprint-org.checkout.weebly.com/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::getCurrentOrder]").success(function (response) {
+      $http.get("http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::getCurrentOrder]").success(function (response) {
           var items = response.result.data.order.items
           angular.forEach(items, function (item, key) {
               var data = {
