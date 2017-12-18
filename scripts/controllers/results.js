@@ -423,7 +423,7 @@ angular.module('ffpApp')
                 console.log((items.length-1), key, items.length-1 == key)
                 if (items.length-1 == key) {
                   $scope.offsetEach(0, (percentage/365))
-                }
+                } 
               })
           })
       })
