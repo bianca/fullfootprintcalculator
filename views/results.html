@@ -53,10 +53,12 @@ Things you could do to help:
 </div>
 <div id="tips">
 	<ul>
-	<li ng-repeat="tip in chosenTips"><div ng-class="{checked: tip.checked}" class="checkbox" ng-click="checktoggle(tip)"></div> {{tip.tip}} (<a href="{{tip.learnmore}}" target="_blank">learn more</a>) </li>
-	<li class="offset"><div class="checkbox"></div>Offset your emissions by:
+	<li ng-repeat="tip in chosenTips"><div ng-class="{checked: tip.checked}" class="checkbox" ng-click="checktoggle(tip)"></div> {{tip.tip}} <a href="{{tip.learnmore}}" target="_blank">learn more</a> </li>
 	</ul>
 </div>
+<div style="color: #000; text-align: center; width:100%">or</div>
+<div style="color: #fff; text-align: center; width:100%">Offset your emissions by:</div>
+
 <div class="offset">
 	<div class="button" ng-click="offset(1)">
 		1 day

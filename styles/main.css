@@ -75,8 +75,8 @@ body {
   font-family: Lato;
   font-size: 60px;
   text-align: center;
-  font-weight: 200;
-  text-shadow: 0 0 8px #000;
+  font-weight: 300;
+  //text-shadow: 0 0 8px #000;
   letter-spacing: -4px;
 }
 
@@ -208,7 +208,7 @@ body {
     //line-height: 90%;
     display: inline-block;
     line-height: normal;
-    text-shadow: 0 0 4px #000;
+    //text-shadow: 0 0 4px #000;
     line-height: 22px;
 }
 
@@ -223,13 +223,16 @@ body {
 }
 
 #calculator div.air {
-  background: url(http://calculator.fullfootprint.org/images/air.png), rgba(0, 102, 204,0.8);
+  //background: url(http://calculator.fullfootprint.org/images/air.png), rgba(0, 102, 204,0.8);
+  background-color: #f1b04b;
 }
 #calculator div.land {
-  background: url(http://calculator.fullfootprint.org/images/land.png), rgba(102, 102, 51,0.8);
+  //background: url(http://calculator.fullfootprint.org/images/land.png), rgba(102, 102, 51,0.8);
+  background-color: #5eab47;
 }
 #calculator div.water {
-  background : url(http://calculator.fullfootprint.org/images/water.png), rgba(0, 153, 153,0.8);
+  //background : url(http://calculator.fullfootprint.org/images/water.png), rgba(0, 153, 153,0.8);
+  background-color: #4caadb;
 }
 
 #calculator #tips {
@@ -260,14 +263,12 @@ body {
     right: 0;
     height: 100%;
     opacity: 1;
-    //background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(/images/splash.jpg);
-    //background-size: cover, cover;
-    //background-attachment: fixed;
     z-index: 1000;
 }
 
 #calculator {
-    background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(/images/splash.jpg);
+    background-color: #3d6eb5;
+    //background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(/images/splash.jpg);
     background-size: cover, cover;
     background-attachment: fixed;
     position: absolute;
@@ -307,7 +308,8 @@ body {
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border: solid 3px rgba(255,255,255, 0.9);
-    background: rgba(255,255,255, 0.4);
+    //background: rgba(255,255,255, 0.4);
+    background: rgba(0,0,0, 0.6);
     font-family: 'Lato', sans-serif;
     color: #fff;
     text-align: center;
@@ -317,7 +319,8 @@ body {
     float: left;
     clear: none;
     margin-bottom: 30px;
-    text-shadow: 0 0 5px rgba(1,68,33, 1);
+    //text-shadow: 0 0 5px rgba(1,68,33, 1);
+    font-weight: 400;
     transition: 2s;
 }
 
@@ -461,3 +464,18 @@ div#status .glyphicon.done{
     color: #fff;
     //text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
+
+div#tips ul li a {
+    color: #fff;
+    text-decoration: none;
+    background: rgba(0,0,0,0.6);
+    padding: 5px;
+    font-size: 12px;
+    transition: 2s;
+}
+
+div#tips ul li a {
+    color: #fff;
+    text-decoration: none;
+    background: rgba(0,0,0,0.2);
+  }
