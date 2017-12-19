@@ -417,8 +417,9 @@ angular.module('ffpApp')
           params:[]
         }
       $http.post("http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::getCurrentOrder]",getdata).success(function (response) {
-          var items = response.result.data.order.items
-          if (items.length > 0) {
+          
+          if (response.result.data != null) {
+              var items = response.result.data.order.items
               angular.forEach(items, function (item, key) {
                   var data = {
                     id:0,
