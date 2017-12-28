@@ -577,6 +577,7 @@ div#loading_image {
     #calculator .results.smaller {
       width: 30% !important;
       height: 30% !important;
+      line-height: 96.35px !important;
     }
 
 @media (max-width: 450px) { 
