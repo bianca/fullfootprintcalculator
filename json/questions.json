@@ -2,7 +2,7 @@
 	"questions" : {
 		"1" : {
 			"order": 1,
-			"question": "Tell us where you live",
+			"question": "I live in",
 			"answers" : [
 				{
 					"answer" : "North America, Australia, Persian Gulf",

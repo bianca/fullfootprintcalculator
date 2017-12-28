@@ -127,6 +127,11 @@ body {
   background-size: 100%;
 }
 
+#calculator div.checkbox:hover {
+  box-shadow: 0px 0px 10px rgba(255,255,255,0.5);
+    background: rgba(255,255,255,0.3);
+}
+
 #calculator div.checkbox.checked {
   background-image: url(http://calculator.fullfootprint.org/images/ic_done_white_24dp.png);
   background-position: center center;
@@ -134,21 +139,31 @@ body {
   transition: 1s;
 }
 
-#calculator div.answer.a4_5, div.answer.a5_5 , div.answer.a1_4, div.answer.a3_4, , div.answer.a2_4, div.answer.a4_4 {
+#calculator div.answer.a4_5, div.answer.a5_5{
     width: 30%;
 }
-#calculator div.answer.a4_5, div.answer.a1_4, div.answer.a3_4 {
-    margin-left: 15%;
-    margin-right: 5%;
+#calculator div.answer.a4_5 {
+    margin-left: 17.5%;
+    margin-right: 2.5%;
 }
-#calculator div.answer.a5_5, div.answer.a2_4, div.answer.a4_4 {
-    margin-left: 5%;
-    margin-right: 15%;
+#calculator div.answer.a5_5 {
+    margin-left: 2.5%;
+    margin-right: 17.5%;
+}
+
+, div.answer.a1_4, div.answer.a3_4, div.answer.a2_4, div.answer.a4_4 {
+    width: 25%;
+    margin-left: 0%;
+    margin-right: 0%;
 }
 
 #calculator div#tips_header {
   width: 100%;
   margin-top: 100px;
+}
+
+#calculator div.answer {
+  cursor: pointer;
 }
 
 #calculator div.answer img {
@@ -268,7 +283,13 @@ body {
 
 #calculator {
     background-color: #3d6eb5;
-    //background: linear-gradient(to right, rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(/images/splash.jpg);
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#3d6eb5+18,1c3c63+100 */
+background: #3d6eb5; /* Old browsers */
+background: -moz-linear-gradient(top,  #3d6eb5 18%, #1c3c63 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top,  #3d6eb5 18%,#1c3c63 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(182.5deg, transparent 92%,#5eab47 8%),linear-gradient(100deg, transparent 92%,#f1b04b 8%),linear-gradient(to bottom, #3d6eb5 18%,#1c3c63 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3d6eb5', endColorstr='#1c3c63',GradientType=0 ); /* IE6-9 */
+
     background-size: cover, cover;
     background-attachment: fixed;
     position: absolute;
@@ -278,8 +299,8 @@ body {
 }
 #calculator .fade.ng-enter,
 #calculator .fade.ng-leave {
-    -webkit-transition: all 1s ease;
-    transition: all 1s ease;
+    -webkit-transition: all 0.5s ease;
+    transition: all 0.5s ease;
 }
 #calculator .fade.ng-enter {
     opacity: 0;
@@ -301,7 +322,7 @@ body {
 #calculator div.offset {
   margin-bottom: 30px;
 }
-#calculator div.offset div.button {
+#calculator div.offset div.button, #calculator div.offsetcosts div.button {
     margin-left: 5%;
     margin-right: 5%;
     width: 22%;
@@ -318,10 +339,17 @@ body {
     padding-bottom: 30px;
     float: left;
     clear: none;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     //text-shadow: 0 0 5px rgba(1,68,33, 1);
     font-weight: 400;
     transition: 2s;
+}
+
+#calculator div.offsetcosts div.button {
+  padding-top: 0px;
+  border: none;
+  background: none;
+  font-size: 24px;
 }
 
 #calculator div.offset div.button:hover {
@@ -337,10 +365,12 @@ body {
 
 #calculator div.imgbg {
   background-image: url(http://calculator.fullfootprint.org/images/whitebg.png);
+  background-repeat: no-repeat;
   width: 253px;
   height: 176px;
   margin: auto;
 }
+
 
 #calculator div.imgbg img{
   opacity: 1;
@@ -367,6 +397,13 @@ body {
   0% { opacity: 1; }
   50% { opacity: 0; }
   100% { opacity: 1; }
+}
+
+@-webkit-keyframes feet {
+  0% { background-image: url(/images/orange_foot.png); }
+  33% { background-image: url(/images/blue_foot.png); }
+  66% { background-image: url(/images/green_foot.png); }
+  100% { background-image: url(/images/orange_foot.png); }
 }
 
 #calculator .flash_this {
@@ -427,13 +464,6 @@ body {
   height: 100%;
 }
 
-@media (max-width: 450px) { 
-    #calculator div.answer {
-      width: 100%;
-      float: left;
-      clear: both;
-    }
-}
 
 #footer-wrap {
   visibility: hidden;
@@ -452,18 +482,59 @@ body {
   width: 95%;
 }
 
-div#status .glyphicon {
-    font-size: 30px;
-    color: #87b2aa;
-    opacity: 0.6;
-    text-shadow: 2px 2px 8px #000;
-    transition: 2s;
+div#status {
+  height: 50px;
+  width: 100%;
+  position: absolute;
+  left: 0px;
+  text-align: center;
+  bottom: 150px;
 }
 
+div#status div {
+  position: absolute; 
+  top: 0px; 
+  z-index: 3000;
+}
+
+div#status span.dots {
+  height: 40px;
+  display: inline-block;
+  vertical-align: middle;
+}
+div#status span.dots span.glyphicon {
+  font-size: 9px;
+}
+
+
+div#status .glyphicon {
+    font-size: 30px;
+    color: #fff;
+    opacity: 0.3;
+    //text-shadow: 2px 2px 8px #000;
+    transition: 2s;
+}
+div#status .glyphicon.statuses-one {
+  transition: 1s;
+}
+
+div#status .glyphicon.statuses-two {
+  transition: 1s;
+}
+
+div#status .glyphicon.statuses-three {
+  transition: 1s;
+}
 div#status .glyphicon.done{
     color: #fff;
+    opacity: 1;
     //text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
 }
+
+div#status .glyphicon.current{
+    text-shadow: -1px 0 #4caadb, 0 1px #4caadb, 1px 0 #4caadb, 0 -1px #4caadb;
+}
+
 
 div#tips ul li a {
     color: #fff;
@@ -472,10 +543,128 @@ div#tips ul li a {
     padding: 5px;
     font-size: 12px;
     transition: 2s;
+    display: block;
+    float: right;
+    margin-right: 20px;
 }
 
-div#tips ul li a {
+div#tips ul li a:hover {
     color: #fff;
     text-decoration: none;
     background: rgba(0,0,0,0.2);
   }
+
+div#loading_image {
+  width: 59px;
+  height: 106px;
+    -webkit-animation: feet 4s infinite;
+  animation: feet 4s infinite;
+}
+
+    #calculator .results {
+      margin-left: auto !important;
+      min-width: 70px;
+      min-height: 70px;
+    }
+    #calculator .summation {
+      padding-bottom: 10px;
+      transition: 1s;
+    }
+    #calculator .summation.smaller {
+      font-size: 20px;
+      transition: 1s;
+    }
+    #calculator .results.smaller {
+      width: 30% !important;
+      height: 30% !important;
+    }
+
+@media (max-width: 450px) { 
+    #calculator div.answer {
+      width: 100%;
+      float: left;
+      clear: both;
+    }
+    body { 
+      overflow: overlay; 
+    }
+    div#status {
+      height: 50px;
+      width: 100%;
+      position: absolute;
+      left: 0px;
+      text-align: center;
+      top: 0px;
+    }
+    #calculator .fade {
+      padding-top: 40px;
+    }
+    #calculator .title {
+      font-size: 30px;
+    }
+    #calculator button {
+      font-size: 20px;
+    }
+
+    #calculator .subtitle {
+      font-size: 18px;
+    }
+    div#status .glyphicon {
+      font-size: 20px;
+      letter-spacing: -2px;
+    }
+    div#status span.dots span.glyphicon {
+      font-size: 4px;
+    }
+    #calculator div.answer {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+    #calculator div.question, div#results_header {
+      font-size: 30px;
+    }
+    #calculator div.imgbg {
+      height: auto;
+    }
+    #calculator div#results_header {
+      font-size: 24px;
+      letter-spacing: -1px;
+    }
+    #calculator div#tips_header {
+      font-size: 24px;
+    }
+    #calculator #tips {
+      clear: both;
+      width: 100%;
+
+    }
+    #calculator #tips ul li {
+      font-size: 18px;
+      clear: both;
+      float: left;
+      width: 90%;     
+      clear: both;
+    }
+    div.inner_tip {
+      display: inline-block;
+      width: 100%;
+    }
+    #calculator div.offset div.button {
+      font-size: 18px;
+    }
+    #calculator div.results_container {
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    #calculator div.results_ocontainer {
+      width: 100%;
+
+      display: block;
+      float: left;
+      clear: both;
+    }
+    #calculator div#results_display {
+      width: 100%;
+    }
+}

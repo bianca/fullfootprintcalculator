@@ -9,10 +9,10 @@
 	<div class="results_ocontainer">
 		<div class="results_container">
 			<div class="results_vcontainer">
-				<div ng-init="grow=true" ng-class="{grow: grow}" class="results air" style="line-height: {{relativeLine.air-tipvalues}}px; width: {{relativeTotal.air-tipvalues}}%; height: {{relativeTotal.air-tipvalues}}%; margin-left: -{{relativeOffset.air-(tipvalues/2)}}%">
+				<div ng-init="grow=true" ng-class="{smaller: ((relativeTotal.water-tipvalues)<30), grow: grow}" class="results air" style="line-height: {{relativeLine.air-tipvalues}}px; width: {{relativeTotal.air-tipvalues}}%; height: {{relativeTotal.air-tipvalues}}%; margin-left: -{{relativeOffset.air-(tipvalues/2)}}%">
 					<span class="results_text" style="margin-top: {{relativeOffset.air-(tipvalues/2)}}%"><br />
 						<!--span class="bubble_subtitles">you've created enough GHGs to fill</span> <br /-->
-							<span style="display:block">{{convertedValues.air}}</span> <br />
+							<span class="summation" ng-class="{smaller: ((relativeTotal.air-tipvalues)<50)}" style="display:block">{{convertedValues.air}}</span> 
 						<span class="bubble_subtitles">kg GHGs</span>
 					</span>
 				</div>
@@ -23,10 +23,10 @@
 
 		<div class="results_container">
 			<div class="results_vcontainer">
-				<div ng-class="{grow: grow}" class="results land" style="line-height: {{relativeLine.land-tipvalues}}px; width: {{relativeTotal.land-tipvalues}}%; height: {{relativeTotal.land-tipvalues}}%; margin-left: -{{relativeOffset.land-(tipvalues/2)}}%">
+				<div ng-class="{smaller: ((relativeTotal.water-tipvalues)<30), grow: grow}" class="results land" style="line-height: {{relativeLine.land-tipvalues}}px; width: {{relativeTotal.land-tipvalues}}%; height: {{relativeTotal.land-tipvalues}}%; margin-left: -{{relativeOffset.land-(tipvalues/2)}}%">
 					<span class="results_text" style="margin-top: {{relativeOffset.land-(tipvalues/2)}}%">
 						<!--span class="bubble_subtitles">you consume enough land to require</span> <br /-->
-							<span style="display:block">{{convertedValues.land}}</span> <br />
+							<span class="summation" ng-class="{smaller: ((relativeTotal.land-tipvalues)<50)}" style="display:block">{{convertedValues.land}}</span> 
 						<span class="bubble_subtitles">m<sup>2</sup> land</span>
 					</span>
 				</div>
@@ -37,10 +37,10 @@
 
 		<div class="results_container">
 			<div class="results_vcontainer">
-				<div ng-class="{grow: grow}" class="results water" style="line-height: {{relativeLine.water-tipvalues}}px;width: {{relativeTotal.water-tipvalues}}%; height: {{relativeTotal.water-tipvalues}}%; margin-left: -{{relativeOffset.water-(tipvalues/2)}}%">
+				<div ng-class="{smaller: ((relativeTotal.water-tipvalues)<30), grow: grow}" class="results water" style="line-height: {{relativeLine.water-tipvalues}}px;width: {{relativeTotal.water-tipvalues}}%; height: {{relativeTotal.water-tipvalues}}%; margin-left: -{{relativeOffset.water-(tipvalues/2)}}%">
 					<span class="results_text" style="margin-top: {{relativeOffset.water-(tipvalues/2)}}%">
 						<!--span class="bubble_subtitles">you've used enough water to fill</span> <br /-->
-							<span style="display:block">{{convertedValues.water}}</span> <br /> 
+							<span class="summation" ng-class="{smaller: ((relativeTotal.water-tipvalues)<50)}" style="display:block">{{convertedValues.water}}</span> 
 						<span class="bubble_subtitles">gallons water</span>
 					</span>
 				</div>
@@ -56,18 +56,29 @@ Things you could do to help:
 	<li ng-repeat="tip in chosenTips"><div ng-class="{checked: tip.checked}" class="checkbox" ng-click="checktoggle(tip)"></div> {{tip.tip}} <a href="{{tip.learnmore}}" target="_blank">learn more</a> </li>
 	</ul>
 </div>
-<div style="color: #000; text-align: center; width:100%">or</div>
-<div style="color: #fff; text-align: center; width:100%">Offset your emissions by:</div>
+<div style="font-size: 24px; color: #4caadb; text-align: center; width:100%; font-weight: 400; margin-bottom: 20px; clear: both;">or</div>
+<div style="font-size: 24px; color: #fff; text-align: center; width:100%; font-weight: 400; margin-bottom: 20px;">Offset your emissions by:</div>
 
 <div class="offset">
-	<div class="button" ng-click="offset(1)">
+	<div class="button" ng-click="offset('day')">
 		1 day
 	</div>
-	<div class="button" ng-click="offset(7)">
+	<div class="button" ng-click="offset('week')">
 		1 week
 	</div>
-	<div class="button" ng-click="offset(365/12)">
+	<div class="button" ng-click="offset('month')">
 		1 month
+	</div>
+</div>
+<div class="offsetcosts">
+	<div class="button">
+		${{cost.day.total}}
+	</div>
+	<div class="button">
+		${{cost.week.total}}
+	</div>
+	<div class="button">
+		${{cost.month.total}}
 	</div>
 </div>
 <div id="offsetwindow" ng-show="buyOffsets" style="height: {{calculatorHeight}}px">

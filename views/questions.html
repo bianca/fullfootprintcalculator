@@ -4,7 +4,24 @@
 	<div ng-repeat="(key,answer) in currentquestion.answers" class="answer a{{(key+1)}}_{{currentquestion.answers.length}}" ng-click="next(answer)">
 	<div class="imgbg">
 		<img ng-src="{{live}}/images/q{{currentquestion.order}}-{{answer.image}}.png" />
-		{{answer.answer}}
+		<span>{{answer.answer}}</span>
 		</div>
 	</div>
+</div>
+    <div id="status" ng-init="statuses=['globe', 'home','user','lamp','road','plane','cutlery','gift','trash']">
+
+    <span ng-repeat="(key, value) in statuses">
+        <span class="glyphicon glyphicon-{{value}}" ng-class="{done: pointer>key, current: pointer==key}" aria-hidden="true"></span>
+        <span class="dots">
+			<span class="glyphicon glyphicon-certificate statuses-one" ng-class="{done: pointer>key+1}" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-certificate statuses-two" ng-class="{done: pointer>key+1}" aria-hidden="true"></span>
+			<span class="glyphicon glyphicon-certificate statuses-three" ng-class="{done: pointer>key+1}" aria-hidden="true"></span>
+		</span>
+	</span>
+	<span class="glyphicon glyphicon-stats" ng-class="{done: pointer>key+1}" aria-hidden="true"></span>
+
+
+
+
+    </div>
 </div>

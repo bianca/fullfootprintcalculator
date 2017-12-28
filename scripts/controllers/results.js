@@ -197,18 +197,44 @@ angular.module('ffpApp')
       }
       $scope.tipvalues = 0
 
-    $rootScope.chooseTips = function () {
-      /*
-      var count = 0;
-      for (var i = 1; i<5; i++) {
-        for (var m in $rootScope.basesizes) {
-          if ($rootScope.basesizes[m] > 25*(i-1) && $rootScope.basesizes[m] <= 25*(i) ) {
-            //$rootScope.chosenTips[count] = 
-            break;
-          }
-        }
+   var postorder = ['air','water','land']
+    var offsettypes = ['air','land','water']
+  var percentage = {
+    day: (1/365),
+    week: (7/365),
+    month: ((365/12)/365)
+  }
+
+  var costperunit = {
+    air: 0.02,
+    land: 0.04,
+    water: 0.02
+  }
+  $scope.cost = {
+    day: {
+      total: 0
+    },
+    week: {
+      total: 0
+    },
+    month: {
+      total: 0
+    }
+  }
+  var setCost = function () {
+    for (var partofyear in $scope.cost) {
+      $scope.cost[partofyear].total = 0
+      for (var offsettype in offsettypes) {
+        $scope.cost[partofyear][offsettypes[offsettype]] = Math.floor($scope.sum[ offsettypes[offsettype] ]/72*percentage[partofyear]*offsetmultiplicationfactors[offsettypes[offsettype]])*costperunit[offsettypes[offsettype]]
+        $scope.cost[partofyear].total += $scope.cost[partofyear][offsettypes[offsettype]]
       }
-       */  
+      $scope.cost[partofyear].total = ($scope.cost[partofyear].total).toFixed(2)
+    }
+
+  }
+
+    $rootScope.chooseTips = function () {
+       $rootScope.chosenTips = []
        var whitelist = []
        var blacklist = []
        var q = $rootScope.questions
@@ -224,7 +250,7 @@ angular.module('ffpApp')
        for (var i in whitelist) {
         if ($rootScope.chosenTips.length < 3) {
           $rootScope.chosenTips.push($scope.tips[whitelist[i]])
-          delete $scope.tips[i]
+          delete $scope.tips[whitelist[i]]
         }
        }
        console.log($scope.tips)
@@ -296,6 +322,7 @@ angular.module('ffpApp')
          $scope.relativeOffset[metric] = $scope.relativeTotal[metric] > 100 ? (($scope.relativeTotal[metric])-100)/2 : 0
          $scope.relativeLine[metric] = Math.min($scope.relativeTotal[metric]*2.95,295)
       }
+      setCost()
       $rootScope.chooseTips();
     }
 
@@ -324,56 +351,56 @@ angular.module('ffpApp')
 
             });
     }
-    var offsettypes = ['air','land','water']
-    $scope.iterate = 0;
-    $scope.offsetbypercentage = 0;
-    var checkifloaded = function(){ 
-        var u = $("#offsetwindowframe").attr('src')
-        var tp = "";
-        if (u == offseturls['air']) {
-          tp = 'air'
-        }
-        if (u == offseturls['land']) {
-          tp = 'land'
-        }
-        if (u == offseturls['water']) {
-          tp = 'water'
-        }
-        if (tp != "") {
-          var amt = Math.floor($scope.sum[ tp ]*$scope.offsetbypercentage)
-          console.log(tp, amt)
-          $("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input").val(amt)
-          $("#offsetwindowframe").contents().find("#wsite-com-product-add-to-cart")[0].click()  
-          if ($scope.iterate+1 in offsettypes) {
-            //$( "#offsetwindowframe" ).unbind("load")
-            $scope.iterate++
-            console.log("offset more")
-            $scope.offsetEach()
-          } else {
-            console.log("opencart")
-            $scope.openCart()
-          }
-          return;
 
-        }
-    }
+//    $scope.iterate = 0;
+//    $scope.offsetbypercentage = 0;
+//    var checkifloaded = function(){ 
+//        var u = $("#offsetwindowframe").attr('src')
+//        var tp = "";
+//        if (u == offseturls['air']) {
+//          tp = 'air'
+//        }
+//        if (u == offseturls['land']) {
+//          tp = 'land'
+//        }
+//        if (u == offseturls['water']) {
+//          tp = 'water'
+//        }
+//        if (tp != "") {
+//          var amt = Math.floor($scope.sum[ tp ]*$scope.offsetbypercentage)
+//          console.log(tp, amt)
+//          $("#offsetwindowframe").contents().find("#wsite-com-product-quantity-input").val(amt)
+//          $("#offsetwindowframe").contents().find("#wsite-com-product-add-to-cart")[0].click()  
+//          if ($scope.iterate+1 in offsettypes) {
+//            //$( "#offsetwindowframe" ).unbind("load")
+//            $scope.iterate++
+//            console.log("offset more")
+//            $scope.offsetEach()
+//          } else {
+//            console.log("opencart")
+//            $scope.openCart()
+//          }
+//          return;
+//
+//        }
+//    }
     //$('#offsetwindowframe').bind("load",checkifloaded);
-    $scope.offsetEachold = function (num, percentage) {    
-      $("#offsetwindowframe").attr('src', offseturls[Object.keys($scope.sum)[$scope.iterate]]); 
-    }
+//    $scope.offsetEachold = function (num, percentage) {    
+//      $("#offsetwindowframe").attr('src', offseturls[Object.keys($scope.sum)[$scope.iterate]]); 
+ //   }
 
-    $scope.offsetold = function (percentage) {
-      console.log("offset...");
-      $scope.iterate = 0
-      $scope.offsetbypercentage = percentage
-      angular.forEach($cookies, function (v, k) {
-          $cookies.remove(k);
-      });
-      $scope.offsetEach((percentage/365))
-    }
+//    $scope.offsetold = function (percentage) {
+//      console.log("offset...");
+//      $scope.iterate = 0
+//      $scope.offsetbypercentage = percentage
+//      angular.forEach($cookies, function (v, k) {
+//          $cookies.remove(k);
+//      });
+//      $scope.offsetEach((percentage/365))
+//    }
   $rootScope.storeurl = "";
   $rootScope.urltouse = "http://calculator.fullfootprint.org/views/loading.html"
-   var postorder = ['air','water','land']
+
    $scope.offsetEach = function (num, percentage) {
           console.log(num, postorder[num])
           console.log(Object.keys($scope.sum)[num])
@@ -387,7 +414,8 @@ angular.module('ffpApp')
           // multiply that by the percentage of the year the user is offsetting
           // $scope.sum is in the calculator units: gha, tCO2 and, m3
           // multiply that by the factor that adjusts for the unit of measure used in the cart. while CO2 is by the kg, water is by the tens of gallons and land is by the tens of hectares
-          var buyunits = Math.floor($scope.sum[ postorder[num] ]/72*percentage*offsetmultiplicationfactors[postorder[num]])
+          //var buyunits = Math.floor($scope.sum[ postorder[num] ]/72*percentage*offsetmultiplicationfactors[postorder[num]])
+          var buyunits = $scope.cost[percentage][postorder[num]]
           var data = {jsonrpc: "2.0", method: "Checkout::addItem", params: [offsetitemids[postorder[num]], "1", buyunits, {}], id: 0}
           $http.post('http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[Checkout::addItem]', data).success(function(response) {
             $rootScope.storeurl = response.result.data.checkout_url
@@ -401,12 +429,12 @@ angular.module('ffpApp')
           });
     }
 
-    $("#offsetwindowframe").load(function() { 
-          console.log("#offsetwindowframe loaded");
-          $rootScope.urltouse = $("#offsetwindowframe").contents().find("#wsite-com-minicart-checkout-button").attr("href")
-          $rootScope.safeApply()
-          console.log($rootScope.urltouse)
-      })
+    //$("#offsetwindowframe").load(function() { 
+    //      console.log("#offsetwindowframe loaded");
+    //      $rootScope.urltouse = $("#offsetwindowframe").contents().find("#wsite-com-minicart-checkout-button").attr("href")
+    //      $rootScope.safeApply()
+    //      console.log($rootScope.urltouse)
+    //  })
 
     $scope.offset = function (percentage) {
       $scope.openCart()
@@ -430,7 +458,7 @@ angular.module('ffpApp')
                   $http.post("http://www.fullfootprint.org/ajax/api/JsonRPC/Commerce/?Commerce[OrderItem::updateQuantity]", data).success(function (resp) {
                     console.log((items.length-1), key, items.length-1 == key)
                     if (items.length-1 == key) {
-                      $scope.offsetEach(0, (percentage/365))
+                      $scope.offsetEach(0, percentage)
                     } 
                   })
               })

@@ -1,4 +1,37 @@
-<div style="width: 100%; text-align: center">
-	<img src="/images/ffp.png" id="loader" class="fade-in-and-out" />
-	<div>Calculating...</div>
+
+<style>
+@-webkit-keyframes feet {
+  0% { background-image: url(/images/orange_foot.png); }
+  33% { background-image: url(/images/blue_foot.png); }
+  66% { background-image: url(/images/green_foot.png); }
+  100% { background-image: url(/images/orange_foot.png); }
+}
+
+
+@-webkit-keyframes fade-in-and-out {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+.fade-in-and-out {
+  opacity: 1;
+  -webkit-animation: fade-in-and-out 2s infinite;
+  animation: fade-in-and-out 2s infinite;
+
+}
+body {
+	background-color: #3d6eb5;
+    animation: feet 4s infinite;
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-family: 'Lato';
+    font-size: 24px;
+}
+</style>
+<div style="margin: 100px; width: 100%; text-align: center">
+	<!--img src="/images/ffp.png" id="loader" class="fade-in-and-out" /-->
+	<div class="fade-in-and-out">Calculating...</div>
 </div>
