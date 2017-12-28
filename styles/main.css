@@ -488,7 +488,7 @@ div#status {
   position: absolute;
   left: 0px;
   text-align: center;
-  bottom: 150px;
+  bottom: 0px;
 }
 
 div#status div {
